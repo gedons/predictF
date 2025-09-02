@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/auth'
 
-const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000'
+const API_BASE = import.meta.env.VITE_API_URL || 'https://predict-wi9l.onrender.com'
 
 const api = axios.create({
   baseURL: API_BASE,
