@@ -150,38 +150,6 @@
 
         <!-- Right: Upcoming Matches -->
         <div class="space-y-6">
-          <!-- Quick Match Selection Header -->
-          <!-- <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/50 p-6"> -->
-            <!-- <div class="flex items-center justify-between mb-4">
-              <div>
-                <h2 class="text-xl font-bold text-gray-900">Quick Select</h2>
-                <p class="text-sm text-gray-600">Choose from upcoming EPL fixtures</p>
-              </div>
-              <div class="flex items-center space-x-2">               
-                <div class="flex items-center text-xs px-2 py-1 rounded-full" :class="apiStatusClass">
-                  <div class="w-2 h-2 rounded-full mr-1" :class="apiStatusDot"></div>
-                  {{ apiStatusText }}
-                </div>
-              </div>
-            </div> -->
-
-            <!-- API Key Status -->
-            <!-- <div v-if="!footballApiKey" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
-              <div class="flex items-start">
-                <svg class="w-5 h-5 text-yellow-400 mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
-                </svg>
-                <div>
-                  <p class="text-sm font-medium text-yellow-800">API Key Required</p>
-                  <p class="text-xs text-yellow-600 mt-1">
-                    Add your Football-Data.org API key to load upcoming fixtures.
-                    <a href="https://www.football-data.org/client/register" target="_blank" class="underline hover:text-yellow-700">Get your free API key here</a>
-                  </p>
-                </div>
-              </div>
-            </div> -->
-          <!-- </div> -->
-
           <!-- Upcoming Matches Component -->
           <UpcomingMatches
             :api-key="footballApiKey"
