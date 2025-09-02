@@ -10,7 +10,7 @@ import MeQuotasView from '../views/MeQuotasView.vue'
 import AdminModels from '../views/Admin/AdminModels.vue'
 import AdminQuotas from '../views/Admin/AdminQuotas.vue'
 import AdminUsers from '../views/Admin/AdminUsers.vue'
-import Admin from '../views/admin/Admin.vue'
+import Admin from '../views/Admin/Admin.vue'
 import { useAuthStore } from '../store/auth'
 
 const routes = [
