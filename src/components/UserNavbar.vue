@@ -29,7 +29,7 @@
             Predict Match
           </router-link>
 
-          <router-link
+          <!-- <router-link
             to="/"
             class="nav-link"
             active-class="nav-link-active"
@@ -38,7 +38,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             History
-          </router-link>
+          </router-link> -->
 
           <router-link
             to="/user/predict/enriched"
@@ -104,7 +104,7 @@
             Predict Match
           </router-link>
           
-          <router-link 
+          <!-- <router-link 
             to="/" 
             class="mobile-nav-link"
             active-class="mobile-nav-link-active"
@@ -114,7 +114,7 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
             Prediction History
-          </router-link>
+          </router-link> -->
           
           <router-link 
             to="/user/predict/enriched" 

@@ -1,231 +1,318 @@
 <!-- src/views/EnrichedView.vue -->
 <template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
-     <UserNavbar />
+  <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+      <div class="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div class="absolute top-40 left-40 w-80 h-80 bg-indigo-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
+      <div class="absolute top-1/2 right-1/3 w-60 h-60 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-15 animate-blob animation-delay-6000"></div>
+    </div>
 
-    <div class="container mx-auto px-4 py-8 lg:py-12">
-        <!-- Header Section -->
-        <div class="text-center mb-10">
-          <h1 class="text-4xl font-bold text-gray-900 mb-3 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text">
-            Enriched Prediction
-          </h1>
-          <p class="text-lg text-gray-600">AI-Powered Model + LLM Analysis</p>
+    <UserNavbar />
+
+    <div class="relative z-10 container mx-auto px-4 py-8 lg:py-12">
+      <!-- Header Section -->
+      <div class="text-center mb-12 animate-fade-in">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-600 rounded-3xl mb-8 shadow-2xl transform hover:scale-110 transition-all duration-300">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364-.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+          </svg>
         </div>
-        <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
-          <!-- Left: Form Section -->
-          <div class="xl:col-span-2 space-y-6">
-            <!-- Main Form Card -->
-            <div class="bg-white/80 backdrop-blur-sm rounded-3xl shadow-xl border border-white/50 p-8">
+        <h1 class="text-6xl font-black text-white mb-6 bg-clip-text bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 tracking-tight">
+          Enriched Predictions
+        </h1>
+        <p class="text-xl text-slate-300 font-light max-w-3xl mx-auto leading-relaxed">
+          Harness the power of AI with our advanced machine learning models combined with expert LLM analysis
+        </p>
+      </div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <!-- Left: Form Section -->
+        <div class="xl:col-span-2 space-y-8 animate-slide-up">
+          <!-- Main Form Card -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500"></div>
+            <div class="relative backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl border border-white/20 p-8 hover:border-white/30 transition-all duration-500">
+              <div class="mb-6">
+                <h2 class="text-2xl font-bold text-white mb-2 flex items-center">
+                  <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-purple-500 rounded-xl flex items-center justify-center mr-3 shadow-lg">
+                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+                    </svg>
+                  </div>
+                  Create Prediction
+                </h2>
+                <p class="text-slate-300 text-sm">Enter match details for AI-powered analysis</p>
+              </div>
+
               <form @submit.prevent="onSubmit" class="space-y-6">
                 <!-- Team Inputs -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700">Home Team</label>
-                    <input 
-                      v-model="home_team" 
-                      placeholder="Enter home team" 
-                      class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-                    />
+                    <label class="text-sm font-semibold text-white/90 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+                      </svg>
+                      Home Team
+                    </label>
+                    <div class="relative group/input">
+                      <input 
+                        v-model="home_team" 
+                        placeholder="Enter home team" 
+                        class="w-full px-4 py-4 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 group-hover:bg-white/15"
+                      />
+                      <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-green-400/10 to-blue-400/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
                   </div>
                   <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700">Away Team</label>
-                    <input 
-                      v-model="away_team" 
-                      placeholder="Enter away team" 
-                      class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-                    />
+                    <label class="text-sm font-semibold text-white/90 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"/>
+                      </svg>
+                      Away Team
+                    </label>
+                    <div class="relative group/input">
+                      <input 
+                        v-model="away_team" 
+                        placeholder="Enter away team" 
+                        class="w-full px-4 py-4 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 group-hover:bg-white/15"
+                      />
+                      <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-red-400/10 to-purple-400/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Date and League -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700">Match Date</label>
-                    <input 
-                      v-model="date" 
-                      type="date" 
-                      class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-                    />
+                    <label class="text-sm font-semibold text-white/90 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                      </svg>
+                      Match Date
+                    </label>
+                    <div class="relative group/input">
+                      <input 
+                        v-model="date" 
+                        type="date" 
+                        class="w-full px-4 py-4 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 group-hover:bg-white/15"
+                      />
+                      <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-yellow-400/10 to-orange-400/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
                   </div>
                   <div class="space-y-2">
-                    <label class="text-sm font-medium text-gray-700">League</label>
-                    <input 
-                      v-model="league" 
-                      placeholder="e.g. premier_league" 
-                      class="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 placeholder-gray-400"
-                    />
+                    <label class="text-sm font-semibold text-white/90 flex items-center">
+                      <svg class="w-4 h-4 mr-2 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                      </svg>
+                      League
+                    </label>
+                    <div class="relative group/input">
+                      <input 
+                        v-model="league" 
+                        placeholder="e.g. premier_league" 
+                        class="w-full px-4 py-4 bg-white/10 backdrop-blur border border-white/20 rounded-xl text-white placeholder-white/60 focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 group-hover:bg-white/15"
+                      />
+                      <div class="absolute inset-0 rounded-xl bg-gradient-to-r from-purple-400/10 to-pink-400/10 opacity-0 group-focus-within:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                    </div>
                   </div>
                 </div>
 
                 <!-- Options and Submit -->
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-4 border-t border-gray-100">
-                  <div class="flex flex-wrap gap-4">
-                    <label class="inline-flex items-center gap-2 cursor-pointer">
-                      <input 
-                        type="checkbox" 
-                        v-model="use_cache" 
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                      />
-                      <span class="text-sm font-medium text-gray-700">Use cache</span>
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6 pt-6 border-t border-white/10">
+                  <div class="flex flex-wrap gap-6">
+                    <label class="inline-flex items-center gap-3 cursor-pointer group/checkbox">
+                      <div class="relative">
+                        <input 
+                          type="checkbox" 
+                          v-model="use_cache" 
+                          class="sr-only"
+                        />
+                        <div class="w-5 h-5 bg-white/10 border-2 border-white/30 rounded-md transition-all duration-200 group-hover/checkbox:border-white/50"
+                             :class="use_cache ? 'bg-blue-500 border-blue-500' : ''">
+                          <svg v-if="use_cache" class="w-3 h-3 text-white absolute top-0.5 left-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <span class="text-sm font-medium text-white/90 group-hover/checkbox:text-white transition-colors">Use cache</span>
                     </label>
-                    <label class="inline-flex items-center gap-2 cursor-pointer">
-                      <input 
-                        type="checkbox" 
-                        v-model="force_refresh" 
-                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                      />
-                      <span class="text-sm font-medium text-gray-700">Force refresh</span>
+                    <label class="inline-flex items-center gap-3 cursor-pointer group/checkbox">
+                      <div class="relative">
+                        <input 
+                          type="checkbox" 
+                          v-model="force_refresh" 
+                          class="sr-only"
+                        />
+                        <div class="w-5 h-5 bg-white/10 border-2 border-white/30 rounded-md transition-all duration-200 group-hover/checkbox:border-white/50"
+                             :class="force_refresh ? 'bg-purple-500 border-purple-500' : ''">
+                          <svg v-if="force_refresh" class="w-3 h-3 text-white absolute top-0.5 left-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                          </svg>
+                        </div>
+                      </div>
+                      <span class="text-sm font-medium text-white/90 group-hover/checkbox:text-white transition-colors">Force refresh</span>
                     </label>
                   </div>
                   
                   <button 
                     type="submit"
                     :disabled="loading" 
-                    class="group relative px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+                    class="group/button relative px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 text-white font-bold rounded-xl shadow-2xl hover:shadow-blue-500/25 transform hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden"
                   >
-                    <span class="flex items-center gap-2">
-                      <svg v-if="loading" class="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover/button:opacity-20 transition-opacity duration-300"></div>
+                    <span class="relative flex items-center gap-3">
+                      <svg v-if="loading" class="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                       </svg>
-                      {{ loading ? 'Processing...' : 'Get Enriched Prediction' }}
+                      <svg v-else class="w-5 h-5 group-hover/button:rotate-12 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                      </svg>
+                      {{ loading ? 'Processing Magic...' : 'Generate Prediction' }}
                     </span>
                   </button>
                 </div>
               </form>
             </div>
+          </div>
 
-            <!-- Error Alert -->
-            <div v-if="error" class="bg-red-50 border border-red-200 rounded-xl p-4 mb-8">
-              <div class="flex items-center gap-3">
-                <div class="flex-shrink-0">
-                  <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+          <!-- Error Alert -->
+          <div v-if="error" class="group relative animate-slide-up">
+            <div class="absolute inset-0 bg-red-500/20 rounded-2xl blur-lg"></div>
+            <div class="relative backdrop-blur-xl bg-red-500/10 border border-red-500/30 rounded-2xl p-6 shadow-xl">
+              <div class="flex items-start gap-4">
+                <div class="flex-shrink-0 w-10 h-10 bg-red-500 rounded-xl flex items-center justify-center shadow-lg">
+                  <svg class="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
                     <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
                   </svg>
                 </div>
-                <div class="text-sm text-red-700">{{ error }}</div>
+                <div class="flex-1">
+                  <h3 class="text-white font-semibold mb-1">Prediction Error</h3>
+                  <p class="text-red-200 text-sm leading-relaxed">{{ error }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Results Section -->
+          <div v-if="result" class="transform transition-all duration-700 ease-in-out animate-slide-up">
+            <!-- Prediction Chart -->
+            <div class="group relative mb-8">
+              <div class="absolute inset-0 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-3xl blur-xl opacity-50 group-hover:opacity-75 transition-all duration-500"></div>
+              <div class="relative backdrop-blur-xl bg-white/5 border border-white/20 rounded-3xl shadow-2xl overflow-hidden hover:border-white/30 transition-all duration-500">
+                <EnrichedPredictionPreview :prediction="result" />
               </div>
             </div>
 
-            <!-- Results Section -->
-            <div v-if="result" class="transform transition-all duration-500 ease-in-out">
-              <!-- Prediction Chart -->
-              <div class="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl p-6">
-                <EnrichedPredictionPreview :prediction="result" />
-              </div>
-
-              <!-- Results Grid -->
-              <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- LLM Raw Output -->
-                <!-- <div class="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl overflow-hidden">
-                  <div class="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            <!-- Processing Stats -->
+            <div class="group relative">
+              <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-blue-500/10 rounded-2xl blur-lg opacity-50"></div>
+              <div class="relative backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl p-6 shadow-xl">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-sm">
+                  <div class="flex items-center gap-3 text-white">
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-lg flex items-center justify-center shadow-lg">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                       </svg>
-                      LLM Raw Output
-                    </h3>
+                    </div>
+                    <div>
+                      <span class="font-semibold text-white/90">Processing Time:</span>
+                      <span class="font-bold text-cyan-300 ml-2">{{ result.processing_time_ms }} ms</span>
+                    </div>
                   </div>
-                  <div class="p-6">
-                    <pre class="text-sm text-gray-700 whitespace-pre-wrap leading-relaxed">{{ result.llm_raw }}</pre>
-                  </div>
-                </div> -->
-
-                <!-- LLM Parsed -->
-                <!-- <div class="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl overflow-hidden">
-                  <div class="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-                    <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                      <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
-                      </svg>
-                      LLM Parsed
-                    </h3>
-                  </div>
-                  <div class="p-6">
-                    <pre class="text-sm text-gray-700 leading-relaxed">{{ prettyJson(result.llm_parsed) }}</pre>
-                  </div>
-                </div> -->
-              </div>
-
-              <!-- Metadata -->
-              <!-- <div class="bg-white/70 backdrop-blur-sm border border-white/20 rounded-2xl shadow-xl overflow-hidden">
-                <div class="px-6 py-4 bg-gradient-to-r from-gray-50 to-gray-100 border-b border-gray-200">
-                  <h3 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    Metadata
-                  </h3>
-                </div>
-                <div class="p-6">
-                  <pre class="text-sm text-gray-700 leading-relaxed">{{ prettyJson(result.model_meta || result.model?.model_meta || {}) }}</pre>
-                </div>
-              </div> -->
-
-              <!-- Processing Stats -->
-              <div class="bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-xl p-4">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm">
-                  <div class="flex items-center gap-2 text-blue-700">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                    <span class="font-medium">Processing Time:</span>
-                    <span class="font-semibold">{{ result.processing_time_ms }} ms</span>
-                  </div>
-                  <div class="flex items-center gap-2">
-                    <div class="flex items-center gap-1">
-                      <div :class="result.cached ? 'bg-green-500' : 'bg-yellow-500'" class="w-2 h-2 rounded-full"></div>
-                      <span class="text-gray-700 font-medium">{{ result.cached ? 'Cached Result' : 'Fresh Prediction' }}</span>
+                  <div class="flex items-center gap-3">
+                    <div class="flex items-center gap-2">
+                      <div :class="result.cached ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'" class="w-3 h-3 rounded-full shadow-lg"></div>
+                      <span class="text-white/90 font-semibold">{{ result.cached ? 'Cached Result' : 'Fresh Prediction' }}</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Right: Upcoming Matches -->
-          <div class="space-y-6">
-            <!-- Upcoming Matches Component -->
-            <UpcomingMatches
-              :api-key="footballApiKey"
-              :auto-refresh="true"
-              :refresh-interval="300000"
-              @select="onSelectMatch"
-              @matches-loaded="onMatchesLoaded"
-              @error="onMatchesError"
-            />
+        <!-- Right: Upcoming Matches -->
+        <div class="space-y-8 animate-slide-up delay-200">
+          <!-- Upcoming Matches Component -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-all duration-500"></div>
+            <div class="relative backdrop-blur-xl bg-white/10 rounded-3xl shadow-2xl border border-white/20 overflow-hidden hover:border-white/30 transition-all duration-500">
+              <div class="p-6 border-b border-white/10">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-green-400 to-blue-500 rounded-xl flex items-center justify-center shadow-lg">
+                      <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 00-2 2v2m0 0V9a2 2 0 012-2m0 0a2 2 0 012-2h6a2 2 0 012 2M7 7V3a2 2 0 012-2h6a2 2 0 012 2v4M5 11a2 2 0 00-2 2v6a2 2 0 002 2"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <h3 class="text-xl font-bold text-white">Live Fixtures</h3>
+                      <p class="text-sm text-slate-300">Premier League matches</p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <div :class="apiStatusDot" class="w-3 h-3 rounded-full shadow-lg"></div>
+                    <span class="text-sm font-medium text-white/80">{{ apiStatusText }}</span>
+                  </div>
+                </div>
+              </div>
+              <div class="relative">
+                <UpcomingMatches
+                  :api-key="footballApiKey"
+                  :auto-refresh="true"
+                  :refresh-interval="300000"
+                  @select="onSelectMatch"
+                  @matches-loaded="onMatchesLoaded"
+                  @error="onMatchesError"
+                />
+              </div>
+            </div>
+          </div>
 
-            <!-- Data Source Info -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-4 border border-blue-100">
-              <div class="flex items-start text-sm text-blue-800">
-                <svg class="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <p class="font-medium mb-1">Live EPL Data</p>
-                  <p class="text-xs text-blue-600">
+          <!-- Data Source Info -->
+          <div class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl blur-lg opacity-50"></div>
+            <div class="relative backdrop-blur-xl bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl">
+              <div class="flex items-start gap-4 text-sm">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-400 to-indigo-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div class="text-white/90">
+                  <p class="font-semibold mb-2">Live EPL Data</p>
+                  <p class="text-xs text-slate-300 leading-relaxed">
                     Match data provided by Football-Data.org API. 
-                    <span v-if="matchStats.upcomingMatches > 0">
-                      Currently showing {{ matchStats.upcomingMatches }} upcoming fixtures.
+                    <span v-if="matchStats.upcomingMatches > 0" class="block mt-1">
+                      Currently showing <span class="font-semibold text-blue-300">{{ matchStats.upcomingMatches }}</span> upcoming fixtures.
                     </span>
                     <span v-if="matchStats.lastUpdate" class="block mt-1">
-                      Last updated: {{ formatLastUpdate(matchStats.lastUpdate) }}
+                      Last updated: <span class="font-semibold text-green-300">{{ formatLastUpdate(matchStats.lastUpdate) }}</span>
                     </span>
                   </p>
                 </div>
               </div>
             </div>
+          </div>
 
-            <!-- Rate Limit Info -->
-            <div v-if="footballApiKey" class="bg-green-50 rounded-2xl p-4 border border-green-100">
-              <div class="flex items-start text-sm text-green-800">
-                <svg class="w-4 h-4 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-                <div>
-                  <p class="font-medium mb-1">API Connected</p>
-                  <p class="text-xs text-green-600">
-                    Auto-refresh every 5 minutes to stay within limits.
+          <!-- API Status -->
+          <div v-if="footballApiKey" class="group relative">
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-green-500/10 rounded-2xl blur-lg opacity-50"></div>
+            <div class="relative backdrop-blur-xl bg-white/10 rounded-2xl p-6 border border-white/20 shadow-xl">
+              <div class="flex items-start gap-4 text-sm">
+                <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-green-500 rounded-lg flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                </div>
+                <div class="text-white/90">
+                  <p class="font-semibold mb-2 text-emerald-300">API Connected</p>
+                  <p class="text-xs text-slate-300 leading-relaxed">
+                    Auto-refresh every 5 minutes to stay within API limits.
+                    <span class="block mt-1">Real-time fixture updates enabled.</span>
                   </p>
                 </div>
               </div>
@@ -233,9 +320,11 @@
           </div>
         </div>
       </div>
-      <Toast />
     </div>
-  </template>
+
+    <Toast />
+  </div>
+</template>
 
 <script setup>
 import { ref, onMounted, computed  } from 'vue'
