@@ -270,7 +270,7 @@ const activityCanvas = ref(null)
 let chart = null
 
 // Local model names mapping (same as in models page)
-const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+const modelNames = ['Aria-3', 'Aria-2', 'Aria-1']
 
 // Function to get display name for active model
 const getActiveModelDisplayName = () => {
