@@ -320,10 +320,6 @@ function clearForm() {
   $toast.info('📝 Form cleared')
 }
 
-/**
- * When a match is selected from UpcomingMatches component
- * The new component returns Football-Data.org format
- */
 function onSelectMatch(match) {
   try {
     // Extract team names from Football-Data.org format
@@ -367,9 +363,6 @@ function onSelectMatch(match) {
   }
 }
 
-/**
- * Handle successful matches loading
- */
 function onMatchesLoaded(data) {
   matchStats.value = {
     totalMatches: data.total || 0,
@@ -388,9 +381,6 @@ function onMatchesLoaded(data) {
   }
 }
 
-/**
- * Handle API errors
- */
 function onMatchesError(error) {
   apiError.value = error.message || 'Unknown error'
   
@@ -406,9 +396,6 @@ function onMatchesError(error) {
   }
 }
 
-/**
- * Format last update time for display
- */
 function formatLastUpdate(date) {
   if (!date) return 'Never'
   
