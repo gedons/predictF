@@ -234,7 +234,7 @@ const props = defineProps({
 })
 
 // Local model names mapping
-const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+const modelNames = ['Aria-3', 'Aria-2', 'Aria-1']
 
 // Model type formatting methods
 const formatModelType = (modelType) => {

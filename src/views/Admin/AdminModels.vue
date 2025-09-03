@@ -228,7 +228,7 @@ const authStore = useAuthStore()
 const currentUser = computed(() => authStore.user)
 
 // Local model names mapping
-const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+const modelNames = ['Aria-3', 'Aria-2', 'Aria-1']
 
 // Function to get display name for model
 const getModelDisplayName = (index) => {
