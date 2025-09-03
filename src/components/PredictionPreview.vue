@@ -107,10 +107,10 @@
       <div v-if="meta" class="bg-gray-50 rounded-xl p-6">
         <h3 class="text-lg font-semibold text-gray-800 mb-3">Model Information</h3>
         <div class="grid md:grid-cols-3 gap-4 text-sm">
-          <div>
-            <span class="text-gray-600">Model Type:</span>
-            <span class="ml-2 font-medium text-gray-800">{{ meta.model_type?.toUpperCase() || 'N/A' }}</span>
-          </div>
+        <div>
+          <span class="text-gray-600">Model Name:</span>
+          <span class="ml-2 font-medium text-gray-800">{{ getModelDisplayName(prediction) }}</span>
+        </div>
           <div>
             <span class="text-gray-600">Training Data:</span>
             <span class="ml-2 font-medium text-gray-800">{{ meta.n_train?.toLocaleString() || 'N/A' }} matches</span>
@@ -140,6 +140,53 @@ const props = defineProps({
     required: true
   }
 })
+
+// Local model names mapping
+const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+
+// Model type formatting methods
+const formatModelType = (modelType) => {
+  if (!modelType) return 'N/A'
+  return modelType.toUpperCase()
+}
+
+const getModelType = (modelData) => {
+  const modelType = modelData?.model_meta?.model_type || modelData?.model_type
+  return formatModelType(modelType)
+}
+
+// Function to get Aria display name for model
+const getModelDisplayName = (prediction) => {
+  if (!prediction) return 'Unknown Model'
+  
+  // Try to get model data from different possible locations
+  const modelData = prediction.model || prediction
+  
+  // Option 1: If you have model ID
+  if (modelData?.id) {
+    const modelIndex = (modelData.id - 1) % modelNames.length
+    return modelNames[modelIndex] || `Aria-${modelIndex + 1}`
+  }
+  
+  // Option 2: If you have model_name, create consistent hash
+  if (modelData?.model_name) {
+    const hash = modelData.model_name.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0)
+      return a & a
+    }, 0)
+    const modelIndex = Math.abs(hash) % modelNames.length
+    return modelNames[modelIndex]
+  }
+  
+  // Option 3: If you have prediction ID, use that
+  if (prediction.id) {
+    const modelIndex = (prediction.id - 1) % modelNames.length
+    return modelNames[modelIndex] || `Aria-${modelIndex + 1}`
+  }
+  
+  // Option 4: Fallback to first model name
+  return modelNames[0]
+}
 
 const probs = computed(() => {
   return props.prediction?.probabilities || {}
