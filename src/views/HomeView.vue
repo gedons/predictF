@@ -299,28 +299,41 @@
             </div>
         </footer>
     </div>
-
-
 </template>
 
 <script>
-    export default{
+    export default {
         data() {
             return {
-                mobileMenuOpen: false
+                mobileMenuOpen: false,
+                form: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                }
             }
         },
-        
         methods: {
             scrollToSection(sectionId) {
                 document.getElementById(sectionId).scrollIntoView({
                     behavior: 'smooth'
                 });
+            },
+            submitForm() {
+                // Handle form submission here
+                alert('Thank you for your message! We\'ll get back to you soon.');
+                // Reset form
+                this.form = {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                };
             }
         }
     }
-    
-   
 
-  
 </script>
