@@ -17,13 +17,13 @@
                     
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="#features" class="text-gray-700 hover:text-primary transition-colors">Features</a>
-                        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors">How It Works</a>
-                        <a href="#pricing" class="text-gray-700 hover:text-primary transition-colors">Pricing</a>
-                        <a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
-                        <button class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
+                        <a href="#features" class="text-gray-700 hover:text-primary transition-colors font-semibold">Features</a>
+                        <a href="#how-it-works" class="text-gray-700 hover:text-primary transition-colors font-semibold">How It Works</a>
+                        <a href="#pricing" class="text-gray-700 hover:text-primary transition-colors font-semibold">Pricing</a>
+                        <a href="#contact" class="text-gray-700 hover:text-primary transition-colors font-semibold">Contact</a>
+                        <router-link to="/register" class="bg-gradient-to-r from-primary to-secondary text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300 transform hover:scale-105">
                             Get Started
-                        </button>
+                        </router-link>
                     </div>
                     
                     <!-- Mobile menu button -->
@@ -81,21 +81,21 @@
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                             <div class="text-center">
                                 <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl font-bold text-green-600">89%</span>
+                                    <span class="text-2xl font-bold text-green-600">59%</span>
                                 </div>
                                 <h3 class="font-semibold text-gray-900">Prediction Accuracy</h3>
                                 <p class="text-gray-600 text-sm">Last 30 days</p>
                             </div>
                             <div class="text-center">
                                 <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl font-bold text-blue-600">2.4K</span>
+                                    <span class="text-2xl font-bold text-blue-600">55K</span>
                                 </div>
                                 <h3 class="font-semibold text-gray-900">Matches Analyzed</h3>
                                 <p class="text-gray-600 text-sm">This month</p>
                             </div>
                             <div class="text-center">
                                 <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                                    <span class="text-2xl font-bold text-purple-600">15+</span>
+                                    <span class="text-2xl font-bold text-purple-600">3+</span>
                                 </div>
                                 <h3 class="font-semibold text-gray-900">Sports Covered</h3>
                                 <p class="text-gray-600 text-sm">And growing</p>
@@ -232,9 +232,9 @@
                     Join thousands of users who trust Match Predict AI for their sports predictions.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <button class="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                    <router-link to="/register" class="bg-white text-primary px-8 py-4 rounded-lg text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                         Start Free Trial
-                    </button>
+                    </router-link>
                     <button class="border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-primary transition-all duration-300">
                         Contact Sales
                     </button>
