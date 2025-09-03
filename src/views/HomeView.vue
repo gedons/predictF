@@ -310,6 +310,7 @@
                 mobileMenuOpen: false
             }
         },
+        
         methods: {
             scrollToSection(sectionId) {
                 document.getElementById(sectionId).scrollIntoView({
