@@ -59,8 +59,8 @@
             <div class="ml-4">
               <div class="text-sm font-medium text-gray-500">AI Models</div>
               <div class="text-2xl font-bold text-gray-900">{{ formatNumber(summary?.models?.total) }}</div>
-              <div class="text-xs text-gray-500 mt-1">
-                Active: {{ summary?.models?.active_model?.model_name ?? 'None' }}
+             <div class="text-xs text-gray-500 mt-1">
+                Active: {{ getActiveModelDisplayName() }}
               </div>
             </div>
           </div>
@@ -268,6 +268,31 @@ const store = useAdminDashboardStore()
 const summary = ref(null)
 const activityCanvas = ref(null)
 let chart = null
+
+// Local model names mapping (same as in models page)
+const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+
+// Function to get display name for active model
+const getActiveModelDisplayName = () => {
+  if (!summary.value?.models?.active_model) {
+    return 'None'
+  }
+  
+  const activeModel = summary.value.models.active_model
+  
+  if (activeModel.id) {
+    const modelIndex = (activeModel.id - 1) % modelNames.length
+    return modelNames[modelIndex] || `Aria-${modelIndex + 1}`
+  }
+
+  const hash = activeModel.model_name.split('').reduce((a, b) => {
+    a = ((a << 5) - a) + b.charCodeAt(0)
+    return a & a
+  }, 0)
+  const modelIndex = Math.abs(hash) % modelNames.length
+  
+  return modelNames[modelIndex]
+}
 
 async function load() {
   try {
