@@ -112,7 +112,7 @@
                     </div>
                   </td>
                   <td class="py-4 px-4">
-                    <div class="font-semibold text-gray-900">{{ model.model_name }}</div>
+                    <div class="font-semibold text-gray-900">{{ getModelDisplayName(models.indexOf(model)) }}</div>
                   </td>
                   <td class="py-4 px-4">
                     <div class="text-sm text-gray-600">{{ formatDate(model.created_at) }}</div>
@@ -226,6 +226,14 @@ import { useAuthStore } from '../../store/auth'
 
 const authStore = useAuthStore()
 const currentUser = computed(() => authStore.user)
+
+// Local model names mapping
+const modelNames = ['Aria-1', 'Aria-2', 'Aria-3']
+
+// Function to get display name for model
+const getModelDisplayName = (index) => {
+  return modelNames[index % modelNames.length] || `Aria-${index + 1}`
+}
 
 // Computed properties for stats
 const activeModelsCount = computed(() => 
