@@ -1,378 +1,9 @@
-<!-- src/views/EnrichedView.vue -->
-<template>
-  <div class="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 relative overflow-hidden">
-    <!-- Background decoration -->
-    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-purple-400/10 to-pink-400/10 rounded-full blur-3xl transform translate-x-32 -translate-y-32"></div>
-      <div class="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-blue-400/10 to-cyan-400/10 rounded-full blur-3xl transform -translate-x-32 translate-y-32"></div>
-      <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-indigo-400/5 to-purple-400/5 rounded-full blur-2xl transform -translate-x-1/2 -translate-y-1/2"></div>
-    </div>
-
-    <UserNavbar />
-
-    <div class="relative container mx-auto px-4 py-8 lg:py-12">
-      <!-- Enhanced Header Section -->
-      <div class="text-center mb-12">
-        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-purple-500 via-blue-600 to-indigo-600 rounded-3xl mb-6 shadow-2xl shadow-purple-500/25 animate-pulse-glow">
-          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
-          </svg>
-        </div>
-        <h1 class="text-5xl font-bold text-gray-900 mb-4">
-          <span class="bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 bg-clip-text text-transparent animate-gradient">
-            Enriched Prediction
-          </span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-          Advanced AI-powered match predictions enhanced with intelligent analysis
-        </p>
-      </div>
-
-      <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
-        <!-- Left: Enhanced Form Section -->
-        <div class="xl:col-span-2 space-y-8">
-          <!-- Main Form Card -->
-          <div class="bg-white/90 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/30 p-8 hover:shadow-3xl transition-all duration-500">
-            <div class="flex items-center gap-3 mb-8">
-              <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
-                </svg>
-              </div>
-              <div>
-                <h2 class="text-xl font-bold text-gray-900">Match Details</h2>
-                <p class="text-sm text-gray-500">Enter the teams and match information</p>
-              </div>
-            </div>
-
-            <form @submit.prevent="onSubmit" class="space-y-6">
-              <!-- Team Inputs with Enhanced Styling -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="group space-y-3">
-                  <label class="flex items-center gap-2 text-sm font-bold text-gray-700">
-                    <div class="w-4 h-4 bg-blue-500 rounded-full"></div>
-                    Home Team
-                  </label>
-                  <div class="relative">
-                    <input 
-                      v-model="home_team" 
-                      placeholder="Enter home team" 
-                      class="w-full px-5 py-4 bg-white/90 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 transition-all duration-300 placeholder-gray-400 text-gray-900 font-medium shadow-lg hover:shadow-xl group-hover:border-blue-300"
-                    />
-                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
-                </div>
-                <div class="group space-y-3">
-                  <label class="flex items-center gap-2 text-sm font-bold text-gray-700">
-                    <div class="w-4 h-4 bg-purple-500 rounded-full"></div>
-                    Away Team
-                  </label>
-                  <div class="relative">
-                    <input 
-                      v-model="away_team" 
-                      placeholder="Enter away team" 
-                      class="w-full px-5 py-4 bg-white/90 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 placeholder-gray-400 text-gray-900 font-medium shadow-lg hover:shadow-xl group-hover:border-purple-300"
-                    />
-                    <div class="absolute inset-0 rounded-2xl bg-gradient-to-r from-purple-500/0 via-purple-500/5 to-blue-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Date and League with Enhanced Styling -->
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <div class="group space-y-3">
-                  <label class="flex items-center gap-2 text-sm font-bold text-gray-700">
-                    <div class="w-4 h-4 bg-green-500 rounded-full"></div>
-                    Match Date
-                  </label>
-                  <div class="relative">
-                    <input 
-                      v-model="date" 
-                      type="date" 
-                      class="w-full px-5 py-4 bg-white/90 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-green-500/20 focus:border-green-500 transition-all duration-300 text-gray-900 font-medium shadow-lg hover:shadow-xl group-hover:border-green-300"
-                    />
-                  </div>
-                </div>
-                <div class="group space-y-3">
-                  <label class="flex items-center gap-2 text-sm font-bold text-gray-700">
-                    <div class="w-4 h-4 bg-indigo-500 rounded-full"></div>
-                    League
-                  </label>
-                  <div class="relative">
-                    <input 
-                      v-model="league" 
-                      placeholder="e.g. premier_league" 
-                      class="w-full px-5 py-4 bg-white/90 border-2 border-gray-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 placeholder-gray-400 text-gray-900 font-medium shadow-lg hover:shadow-xl group-hover:border-indigo-300"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <!-- Enhanced Options and Submit -->
-              <div class="bg-gradient-to-r from-gray-50 to-blue-50 rounded-2xl p-6 border border-gray-200/50">
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-                  <div class="flex flex-wrap gap-6">
-                    <label class="group inline-flex items-center gap-3 cursor-pointer">
-                      <div class="relative">
-                        <input 
-                          type="checkbox" 
-                          v-model="use_cache" 
-                          class="sr-only"
-                        />
-                        <div class="w-6 h-6 bg-white border-2 border-gray-300 rounded-lg shadow-sm group-hover:border-blue-400 transition-all duration-200" :class="{ 'bg-blue-500 border-blue-500': use_cache }">
-                          <svg v-if="use_cache" class="w-4 h-4 text-white absolute inset-0 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <span class="text-sm font-semibold text-gray-700 group-hover:text-blue-700 transition-colors">Use cache</span>
-                    </label>
-                    
-                    <label class="group inline-flex items-center gap-3 cursor-pointer">
-                      <div class="relative">
-                        <input 
-                          type="checkbox" 
-                          v-model="force_refresh" 
-                          class="sr-only"
-                        />
-                        <div class="w-6 h-6 bg-white border-2 border-gray-300 rounded-lg shadow-sm group-hover:border-purple-400 transition-all duration-200" :class="{ 'bg-purple-500 border-purple-500': force_refresh }">
-                          <svg v-if="force_refresh" class="w-4 h-4 text-white absolute inset-0 m-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
-                          </svg>
-                        </div>
-                      </div>
-                      <span class="text-sm font-semibold text-gray-700 group-hover:text-purple-700 transition-colors">Force refresh</span>
-                    </label>
-                  </div>
-                  
-                  <div class="flex gap-3">
-                    <button 
-                      type="button"
-                      @click="clearForm"
-                      class="px-6 py-3 bg-white border-2 border-gray-300 text-gray-700 font-semibold rounded-xl hover:border-gray-400 hover:bg-gray-50 transition-all duration-200 shadow-lg hover:shadow-xl"
-                    >
-                      Clear
-                    </button>
-                    
-                    <button 
-                      type="submit"
-                      :disabled="loading || !home_team || !away_team" 
-                      class="group relative px-8 py-3 bg-gradient-to-r from-purple-600 via-blue-600 to-indigo-600 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden"
-                    >
-                      <!-- Animated background -->
-                      <div class="absolute inset-0 bg-gradient-to-r from-purple-700 via-blue-700 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      
-                      <span class="relative flex items-center gap-3">
-                        <div v-if="loading" class="relative">
-                          <div class="w-5 h-5 border-2 border-white/30 rounded-full animate-spin border-t-white"></div>
-                        </div>
-                        <svg v-else class="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                        {{ loading ? 'Analyzing Match...' : 'Generate Prediction' }}
-                      </span>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-
-          <!-- Enhanced Error Alert -->
-          <div v-if="error" class="bg-white/90 backdrop-blur-xl border border-red-200 rounded-2xl p-6 shadow-xl">
-            <div class="flex items-start gap-4">
-              <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-red-400 to-rose-500 rounded-2xl flex items-center justify-center shadow-lg">
-                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
-                </svg>
-              </div>
-              <div class="flex-1 min-w-0">
-                <h3 class="text-lg font-bold text-red-900 mb-2">Prediction Failed</h3>
-                <p class="text-red-700 leading-relaxed">{{ error }}</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Enhanced Results Section -->
-          <div v-if="result" class="transform transition-all duration-500 ease-in-out animate-fade-in">
-            <!-- Prediction Chart with Modern Styling -->
-            <div class="bg-white/90 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl p-8 mb-8 hover:shadow-3xl transition-all duration-500">
-              <div class="flex items-center gap-3 mb-6">
-                <div class="w-10 h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg">
-                  <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <h3 class="text-xl font-bold text-gray-900">Prediction Results</h3>
-                  <p class="text-sm text-gray-500">AI analysis and probability breakdown</p>
-                </div>
-              </div>
-              
-              <EnrichedPredictionPreview :prediction="result" />
-            </div>
-
-            <!-- Processing Stats Card -->
-            <div class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border border-blue-200/50 rounded-2xl p-6 shadow-lg">
-              <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <!-- Processing Time -->
-                <div class="flex items-center gap-3">
-                  <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center shadow-lg">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p class="text-sm font-medium text-gray-600">Processing Time</p>
-                    <p class="text-lg font-bold text-blue-700">{{ result.processing_time_ms }}ms</p>
-                  </div>
-                </div>
-
-                <!-- Cache Status -->
-                <div class="flex items-center gap-3">
-                  <div class="flex items-center gap-2">
-                    <div :class="result.cached ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'" class="w-3 h-3 rounded-full shadow-lg"></div>
-                    <span class="text-sm font-bold" :class="result.cached ? 'text-emerald-700' : 'text-amber-700'">
-                      {{ result.cached ? 'Cached Result' : 'Fresh Analysis' }}
-                    </span>
-                  </div>
-                </div>
-
-                <!-- Performance Badge -->
-                <div class="flex items-center">
-                  <span class="inline-flex items-center px-4 py-2 rounded-xl text-xs font-bold shadow-lg" 
-                        :class="result.processing_time_ms < 1000 ? 'bg-emerald-100 text-emerald-800 border border-emerald-200' : 
-                               result.processing_time_ms < 3000 ? 'bg-yellow-100 text-yellow-800 border border-yellow-200' : 
-                               'bg-red-100 text-red-800 border border-red-200'">
-                    {{ result.processing_time_ms < 1000 ? '⚡ Fast' : 
-                       result.processing_time_ms < 3000 ? '🔶 Normal' : '🐌 Slow' }}
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Enhanced Sidebar -->
-        <div class="space-y-8">
-          <!-- Live Matches Card -->
-          <div class="bg-white/90 backdrop-blur-xl border border-white/30 rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-500">
-            <div class="px-6 py-5 bg-gradient-to-r from-gray-900 via-blue-900 to-indigo-900 text-white">
-              <div class="flex items-center justify-between">
-                <div class="flex items-center gap-3">
-                  <div class="w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 9a2 2 0 00-2 2v2a2 2 0 002 2m0 0V9a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <h3 class="text-lg font-bold">Live Fixtures</h3>
-                    <p class="text-blue-200 text-xs">Click any match to auto-fill</p>
-                  </div>
-                </div>
-                
-                <!-- API Status Indicator -->
-                <div class="flex items-center gap-2">
-                  <div :class="apiStatusDot" class="w-3 h-3 rounded-full shadow-lg"></div>
-                  <span class="text-xs font-medium text-blue-200">{{ apiStatusText }}</span>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-6">
-              <UpcomingMatches
-                :api-key="footballApiKey"
-                :auto-refresh="true"
-                :refresh-interval="300000"
-                @select="onSelectMatch"
-                @matches-loaded="onMatchesLoaded"
-                @error="onMatchesError"
-              />
-            </div>
-          </div>
-
-          <!-- Enhanced Data Source Info -->
-          <div class="bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 rounded-2xl p-6 border border-blue-200/50 shadow-lg">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-blue-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-lg font-bold text-blue-900 mb-3">Live EPL Data</h4>
-                <div class="space-y-2 text-sm text-blue-800">
-                  <p><span class="font-semibold">Source:</span> Football-Data.org API</p>
-                  <p v-if="matchStats.upcomingMatches > 0">
-                    <span class="font-semibold">Fixtures:</span> {{ matchStats.upcomingMatches }} upcoming matches
-                  </p>
-                  <p v-if="matchStats.lastUpdate" class="text-blue-600">
-                    <span class="font-semibold">Updated:</span> {{ formatLastUpdate(matchStats.lastUpdate) }}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Enhanced API Status Card -->
-          <div v-if="footballApiKey" class="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 rounded-2xl p-6 border border-emerald-200/50 shadow-lg">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-emerald-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                </svg>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-lg font-bold text-emerald-900 mb-3">API Status</h4>
-                <div class="space-y-2 text-sm text-emerald-800">
-                  <div class="flex items-center gap-2">
-                    <div class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></div>
-                    <span class="font-semibold">Connected & Active</span>
-                  </div>
-                  <p class="text-emerald-600">Auto-refresh every 5 minutes to stay within rate limits</p>
-                  <p class="text-emerald-600">Smart caching reduces API calls</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- No API Key Warning -->
-          <div v-else class="bg-gradient-to-br from-amber-50 via-orange-50 to-red-50 rounded-2xl p-6 border border-amber-200/50 shadow-lg">
-            <div class="flex items-start gap-4">
-              <div class="w-10 h-10 bg-amber-500 rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16c-.77.833.192 2.5 1.732 2.5z"></path>
-                </svg>
-              </div>
-              <div class="flex-1">
-                <h4 class="text-lg font-bold text-amber-900 mb-2">API Key Required</h4>
-                <p class="text-sm text-amber-800 mb-3">Add your Football-Data.org API key to load live fixtures</p>
-                <a 
-                  href="https://www.football-data.org/client/register" 
-                  target="_blank"
-                  class="inline-flex items-center gap-2 text-sm font-semibold text-amber-700 hover:text-amber-800 transition-colors"
-                >
-                  Get Free API Key
-                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <Toast />
-  </div>
-</template>
-
 <script setup>
-import { ref, onMounted, computed  } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { usePredictionStore } from '../store/prediction'
 import EnrichedPredictionPreview from '../components/EnrichedPredictionPreview.vue'
 import UpcomingMatches from '../components/UpcomingMatches.vue'
-import {useToast} from 'vue-toast-notification';
+import { useToast } from 'vue-toast-notification'
 import UserNavbar from '../components/UserNavbar.vue'
 import Toast from '../components/Toast.vue'
 
@@ -389,7 +20,6 @@ const force_refresh = ref(false)
 const loading = ref(false)
 const error = ref(null)
 const result = ref(null)
-const prediction = ref(null)
 
 const footballApiKey = ref(import.meta.env.VITE_FOOTBALL_API_KEY || '') 
 
@@ -403,44 +33,24 @@ const matchStats = ref({
 // API status management
 const apiError = ref(null)
 
-const apiStatusClass = computed(() => {
-  if (!footballApiKey.value || footballApiKey.value === import.meta.env.VITE_FOOTBALL_API_KEY || '') {
-    return 'bg-gray-100 text-gray-600'
+function formatLastUpdate(date) {
+  if (!date) return 'Never'
+  try {
+    const now = new Date()
+    const diff = now - date
+    const minutes = Math.floor(diff / (1000 * 60))
+    
+    if (minutes < 1) return 'Just now'
+    if (minutes < 60) return `${minutes}m ago`
+    
+    const hours = Math.floor(minutes / 60)
+    if (hours < 24) return `${hours}h ago`
+    
+    return date.toLocaleDateString()
+  } catch (e) {
+    return 'Unknown'
   }
-  if (apiError.value) {
-    return 'bg-red-100 text-red-700'
-  }
-  if (matchStats.value.upcomingMatches > 0) {
-    return 'bg-green-100 text-green-700'
-  }
-  return 'bg-yellow-100 text-yellow-700'
-})
-
-const apiStatusDot = computed(() => {
-  if (!footballApiKey.value || footballApiKey.value === import.meta.env.VITE_FOOTBALL_API_KEY || '') {
-    return 'bg-gray-400'
-  }
-  if (apiError.value) {
-    return 'bg-red-500 animate-pulse'
-  }
-  if (matchStats.value.upcomingMatches > 0) {
-    return 'bg-emerald-500 animate-pulse'
-  }
-  return 'bg-amber-500 animate-pulse'
-})
-
-const apiStatusText = computed(() => {
-  if (!footballApiKey.value || footballApiKey.value === import.meta.env.VITE_FOOTBALL_API_KEY || '') {
-    return 'Disconnected'
-  }
-  if (apiError.value) {
-    return 'Error'
-  }
-  if (matchStats.value.upcomingMatches > 0) {
-    return 'Live'
-  }
-  return 'Connecting'
-})
+}
 
 onMounted(async () => {
   try {
@@ -455,14 +65,6 @@ onMounted(async () => {
     console.error('Error in onMounted:', e)
   }
 })
-
-function prettyJson(obj) {
-  try {
-    return JSON.stringify(obj, null, 2)
-  } catch {
-    return String(obj)
-  }
-}
 
 async function onSubmit() {
   error.value = null
@@ -484,15 +86,15 @@ async function onSubmit() {
       force_refresh: force_refresh.value
     })
     result.value = res
-    $toast.success('🎯 Prediction generated successfully!')
+    $toast.success('✨ AI Analysis complete!')
   } catch (err) {
     console.error('predictEnriched failed', err)
     if (err.response && err.response.data) {
       error.value = err.response.data.detail || JSON.stringify(err.response.data)
-      $toast.error(`❌ Prediction failed: ${error.value}`)
+      $toast.error(`❌ Analysis failed: ${error.value}`)
     } else {
       error.value = err.message || String(err)
-      $toast.error(`❌ Prediction failed: ${error.value}`)
+      $toast.error(`❌ Analysis failed: ${error.value}`)
     }
   } finally {
     loading.value = false
@@ -504,7 +106,6 @@ function clearForm() {
   away_team.value = ''
   date.value = new Date().toISOString().split('T')[0]
   league.value = 'premier_league'
-  prediction.value = null
   result.value = null
   error.value = null
   $toast.info('📝 Form cleared')
@@ -512,15 +113,12 @@ function clearForm() {
 
 function onSelectMatch(match) {
   try {
-    // Extract team names from Football-Data.org format
     const homeTeam = match.homeTeam?.shortName || match.homeTeam?.name || 'Unknown'
     const awayTeam = match.awayTeam?.shortName || match.awayTeam?.name || 'Unknown'
     
-    // Fill form fields
     home_team.value = homeTeam
     away_team.value = awayTeam
     
-    // Format date for input (expects yyyy-mm-dd)
     if (match.utcDate) {
       try {
         const matchDate = new Date(match.utcDate)
@@ -532,23 +130,17 @@ function onSelectMatch(match) {
       }
     }
     
-    // Set league to Premier League since we're getting EPL fixtures
     league.value = 'premier_league'
-    
-    // Clear any existing prediction and errors
-    prediction.value = null
     result.value = null
     error.value = null
-    
-    // Show success toast
     $toast.success(`⚽ Selected: ${homeTeam} vs ${awayTeam}`)
     
-    console.log('Selected match:', {
-      home: homeTeam,
-      away: awayTeam,
-      date: date.value,
-      originalMatch: match
+    // Scroll to top on mobile
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
     })
+
   } catch (error) {
     console.error('Error selecting match:', error)
     $toast.error('❌ Error selecting match. Please try again.')
@@ -561,13 +153,10 @@ function onMatchesLoaded(data) {
     upcomingMatches: data.upcoming || 0,
     lastUpdate: new Date()
   }
-  
   apiError.value = null
   
-  console.log(`Loaded ${data.total} total matches, ${data.upcoming} upcoming`)
-  
   if (data.upcoming === 0 && data.total > 0) {
-    $toast.warning('⚠️ No upcoming fixtures found in the next 30 days')
+    $toast.warning('⚠️ No upcoming fixtures found')
   } else if (data.upcoming > 0) {
     $toast.success(`✅ Loaded ${data.upcoming} upcoming EPL fixtures`)
   }
@@ -575,289 +164,379 @@ function onMatchesLoaded(data) {
 
 function onMatchesError(error) {
   apiError.value = error.message || 'Unknown error'
-  
   console.error('Matches API error:', error)
   
-  // Show appropriate error message
   if (error.message?.includes('Invalid API key')) {
-    $toast.error('🔑 Invalid API key. Please check your Football-Data.org API key')
+    $toast.error('🔑 Invalid API key')
   } else if (error.message?.includes('rate limit')) {
-    $toast.error('⏱️ API rate limit exceeded. Please wait a moment before refreshing')
+    $toast.error('⏱️ API rate limit exceeded')
   } else {
     $toast.error(`❌ Error loading fixtures: ${error.message}`)
   }
 }
-
-function formatLastUpdate(date) {
-  if (!date) return 'Never'
-  
-  try {
-    const now = new Date()
-    const diff = now - date
-    const minutes = Math.floor(diff / (1000 * 60))
-    
-    if (minutes < 1) return 'Just now'
-    if (minutes < 60) return `${minutes}m ago`
-    
-    const hours = Math.floor(minutes / 60)
-    if (hours < 24) return `${hours}h ago`
-    
-    return date.toLocaleDateString()
-  } catch (e) {
-    return 'Unknown'
-  }
-}
 </script>
 
+<template>
+  <div class="min-h-screen bg-slate-50 relative overflow-hidden font-sans transition-colors duration-300">
+    
+    <!-- AI-Themed Background Blobs -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-[20%] -right-[10%] w-[70%] h-[70%] bg-fuchsia-100/40 rounded-full blur-3xl animate-blob"></div>
+      <div class="absolute top-[30%] -left-[10%] w-[60%] h-[60%] bg-indigo-100/40 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
+      <div class="absolute -bottom-[10%] left-[20%] w-[60%] h-[60%] bg-purple-100/40 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+    </div>
+
+    <UserNavbar />
+
+    <div class="relative z-10 container mx-auto px-4 sm:px-6 py-8 lg:py-12">
+      <!-- Header Section -->
+      <div class="text-center mb-12 animate-fade-in-up">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-fuchsia-600 via-purple-600 to-indigo-600 rounded-3xl shadow-xl shadow-purple-200 mb-6 transform hover:scale-110 transition-transform duration-300 animate-pulse-glow">
+          <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 mb-4 tracking-tight">
+          Enriched <span class="bg-clip-text text-transparent bg-gradient-to-r from-fuchsia-600 to-indigo-600 animate-gradient">Prediction</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
+          Harness advanced AI models with intelligent data enrichment for deep match insights and higher accuracy.
+        </p>
+      </div>
+
+      <div class="max-w-7xl mx-auto grid grid-cols-1 xl:grid-cols-3 gap-8">
+        <!-- Left: Form Section -->
+        <div class="xl:col-span-2 space-y-8">
+          <!-- Main Form Card -->
+          <div class="bg-white rounded-3xl shadow-xl shadow-indigo-100 border border-white/50 p-6 sm:p-8 animate-fade-in-up animation-delay-200">
+            <div class="mb-8 border-b border-slate-100 pb-6 flex items-center justify-between">
+              <div>
+                <h2 class="text-2xl font-bold text-slate-900 mb-1">Analysis Parameters</h2>
+                <p class="text-slate-500 text-sm">Configure teams and AI settings.</p>
+              </div>
+              <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-indigo-50 rounded-full border border-indigo-100">
+                <div class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></div>
+                <span class="text-xs font-semibold text-indigo-700">AI Ready</span>
+              </div>
+            </div>
+
+            <form @submit.prevent="onSubmit" class="space-y-8">
+              <!-- Team Inputs -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="group space-y-2">
+                  <label class="flex items-center gap-2 text-sm font-bold text-slate-700">
+                    <span class="w-2 h-2 bg-fuchsia-500 rounded-full"></span>
+                    Home Team
+                  </label>
+                  <div class="relative transition-all duration-200 transform group-hover:-translate-y-1">
+                    <input 
+                      v-model="home_team" 
+                      placeholder="Home Team" 
+                      class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-fuchsia-500/20 focus:border-fuchsia-500 transition-all duration-300 placeholder-slate-400 text-slate-900 font-semibold shadow-sm group-hover:shadow-md outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="group space-y-2">
+                  <label class="flex items-center gap-2 text-sm font-bold text-slate-700">
+                    <span class="w-2 h-2 bg-indigo-500 rounded-full"></span>
+                    Away Team
+                  </label>
+                  <div class="relative transition-all duration-200 transform group-hover:-translate-y-1">
+                    <input 
+                      v-model="away_team" 
+                      placeholder="Away Team" 
+                      class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-300 placeholder-slate-400 text-slate-900 font-semibold shadow-sm group-hover:shadow-md outline-none"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Date and League -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div class="group space-y-2">
+                  <label class="flex items-center gap-2 text-sm font-bold text-slate-700">
+                    Match Date
+                  </label>
+                  <input 
+                    v-model="date" 
+                    type="date" 
+                    class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 text-slate-900 font-medium shadow-sm outline-none"
+                    required
+                  />
+                </div>
+                <div class="group space-y-2">
+                  <label class="flex items-center gap-2 text-sm font-bold text-slate-700">
+                    League
+                  </label>
+                  <div class="relative">
+                      <select
+                        v-model="league"
+                        class="w-full px-5 py-4 bg-slate-50 border-2 border-slate-200 rounded-2xl focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500 transition-all duration-300 text-slate-900 font-medium shadow-sm outline-none appearance-none cursor-pointer"
+                      >
+                        <option value="premier_league">Premier League</option>
+                        <option value="championship">Championship</option>
+                        <option value="la_liga">La Liga</option>
+                        <option value="serie_a">Serie A</option>
+                        <option value="bundesliga">Bundesliga</option>
+                        <option value="ligue_1">Ligue 1</option>
+                      </select>
+                      <div class="absolute right-5 top-1/2 transform -translate-y-1/2 pointer-events-none text-slate-500">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                      </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Advanced Options -->
+              <div class="bg-gradient-to-r from-slate-50 to-indigo-50/50 rounded-2xl p-5 border border-slate-200/60">
+                <div class="flex flex-col sm:flex-row gap-4 mb-6">
+                   <!-- Toggle 1 -->
+                   <label class="relative flex-1 flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200"
+                          :class="use_cache ? 'bg-white border-indigo-500 shadow-md' : 'bg-slate-50 border-slate-200 hover:border-slate-300'">
+                      <input type="checkbox" v-model="use_cache" class="sr-only" />
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 transition-colors"
+                           :class="use_cache ? 'bg-indigo-100 text-indigo-600' : 'bg-slate-200 text-slate-400'">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                      </div>
+                      <div>
+                         <span class="block text-sm font-bold" :class="use_cache ? 'text-indigo-900' : 'text-slate-600'">Smart Cache</span>
+                         <span class="block text-xs text-slate-500">Faster results</span>
+                      </div>
+                      <div class="absolute top-4 right-4 w-3 h-3 rounded-full border-2 border-white"
+                           :class="use_cache ? 'bg-indigo-500' : 'bg-slate-300'"></div>
+                   </label>
+
+                   <!-- Toggle 2 -->
+                   <label class="relative flex-1 flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-200"
+                          :class="force_refresh ? 'bg-white border-fuchsia-500 shadow-md' : 'bg-slate-50 border-slate-200 hover:border-slate-300'">
+                      <input type="checkbox" v-model="force_refresh" class="sr-only" />
+                      <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 transition-colors"
+                           :class="force_refresh ? 'bg-fuchsia-100 text-fuchsia-600' : 'bg-slate-200 text-slate-400'">
+                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                      </div>
+                      <div>
+                         <span class="block text-sm font-bold" :class="force_refresh ? 'text-fuchsia-900' : 'text-slate-600'">Deep Refresh</span>
+                         <span class="block text-xs text-slate-500">Ignore existing data</span>
+                      </div>
+                      <div class="absolute top-4 right-4 w-3 h-3 rounded-full border-2 border-white"
+                           :class="force_refresh ? 'bg-fuchsia-500' : 'bg-slate-300'"></div>
+                   </label>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <button 
+                      type="button"
+                      @click="clearForm"
+                      class="px-6 py-4 bg-white border-2 border-slate-200 text-slate-600 font-bold rounded-xl hover:border-slate-300 hover:bg-slate-50 transition-all duration-200 flex items-center justify-center gap-2"
+                    >
+                      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                      Clear
+                    </button>
+                    
+                    <button 
+                      type="submit"
+                      :disabled="loading || !home_team || !away_team" 
+                      class="flex-1 group relative px-8 py-4 bg-gradient-to-r from-fuchsia-600 via-purple-600 to-indigo-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none overflow-hidden"
+                    >
+                      <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                      <span class="relative flex items-center justify-center gap-3 text-lg">
+                        <div v-if="loading" class="w-6 h-6 border-3 border-white/30 rounded-full animate-spin border-t-white"></div>
+                        <svg v-else class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        {{ loading ? 'Running AI Analysis...' : 'Generate Enriched Prediction' }}
+                      </span>
+                    </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Enhanced Results Section -->
+          <div v-if="result" class="space-y-8 animate-fade-in">
+            
+            <!-- Main Prediction Card -->
+            <div class="bg-white/90 backdrop-blur-xl border border-indigo-100 rounded-3xl shadow-2xl p-1 sm:p-2 hover:shadow-3xl transition-all duration-500">
+              <EnrichedPredictionPreview :prediction="result" />
+            </div>
+
+            <!-- Stats Dashboard -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+               <!-- Time Card -->
+               <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 font-bold uppercase">Processing Time</p>
+                    <p class="text-lg font-extrabold text-slate-800">{{ result.processing_time_ms }}<span class="text-xs font-normal text-slate-400 ml-1">ms</span></p>
+                  </div>
+               </div>
+
+               <!-- Cache Card -->
+               <div class="bg-white p-5 rounded-2xl border border-slate-100 shadow-sm flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-full flex items-center justify-center" :class="result.cached ? 'bg-emerald-50 text-emerald-600' : 'bg-amber-50 text-amber-600'">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                  </div>
+                  <div>
+                    <p class="text-xs text-slate-500 font-bold uppercase">Source</p>
+                    <p class="text-lg font-extrabold text-slate-800">{{ result.cached ? 'Cache Hit' : 'Fresh Computation' }}</p>
+                  </div>
+               </div>
+            </div>
+          </div>
+
+          <!-- Error Alert -->
+          <div v-if="error" class="bg-red-50 border border-red-200 rounded-2xl p-6 shadow-lg animate-shake">
+            <div class="flex items-start gap-4">
+              <div class="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center text-red-600 flex-shrink-0">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-red-900">Analysis Failed</h3>
+                <p class="text-red-700 mt-1">{{ error }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Enhanced Sidebar -->
+        <div class="space-y-6 animate-fade-in-up animation-delay-200">
+          
+          <!-- Upcoming Matches Component -->
+          <div class="bg-white rounded-3xl shadow-xl border border-indigo-100 overflow-hidden min-h-[300px]">
+             <div class="p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-indigo-50/30">
+                <h3 class="font-bold text-slate-900 text-lg flex items-center">
+                    <span class="relative flex h-3 w-3 mr-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
+                    </span>
+                    Live Fixtures
+                </h3>
+             </div>
+             <div class="p-1">
+                 <UpcomingMatches
+                    :api-key="footballApiKey"
+                    :auto-refresh="true"
+                    :refresh-interval="300000"
+                    @select="onSelectMatch"
+                    @matches-loaded="onMatchesLoaded"
+                    @error="onMatchesError"
+                  />
+             </div>
+          </div>
+
+          <!-- Data Source Info -->
+          <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm">
+            <div class="flex items-start text-sm">
+              <div class="p-2 bg-indigo-50 rounded-lg mr-4 shrink-0">
+                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-slate-800 mb-1">Live Data Stream</p>
+                <p class="text-slate-500 leading-relaxed">
+                  Real-time match data via Football-Data.org.
+                  <span v-if="matchStats.upcomingMatches > 0" class="text-indigo-600 font-medium">
+                    {{ matchStats.upcomingMatches }} matches available.
+                  </span>
+                </p>
+                <p v-if="matchStats.lastUpdate" class="text-xs text-slate-400 mt-2">
+                  Synced: {{ formatLastUpdate(matchStats.lastUpdate) }}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rate Limit Info -->
+          <div v-if="footballApiKey" class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm">
+            <div class="flex items-start text-sm">
+              <div class="p-2 bg-emerald-50 rounded-lg mr-4 shrink-0">
+                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <div>
+                <p class="font-bold text-slate-800 mb-1">System Status</p>
+                <div class="flex items-center gap-2 mt-1">
+                  <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                  <p class="text-emerald-700 font-medium">Connected</p>
+                </div>
+                <p class="text-slate-500 text-xs mt-1">Smart throttling enabled</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <Toast />
+  </div>
+</template>
+
 <style scoped>
-/* Enhanced terminal-style pre */
-pre { 
-  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); 
-  border-radius: 12px; 
-  overflow-x: auto; 
-  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Fira Code', monospace;
-  font-size: 13px;
-  line-height: 1.6;
-  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
-/* Enhanced scrollbar styling */
-pre::-webkit-scrollbar {
-  height: 8px;
-  width: 8px;
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-pre::-webkit-scrollbar-track {
-  background: rgba(241, 245, 249, 0.5);
-  border-radius: 4px;
-}
-
-pre::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
-  border-radius: 4px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-pre::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #2563eb, #7c3aed);
-}
-
-/* Enhanced transitions */
-* {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-}
-
-/* Custom animations */
 @keyframes pulse-glow {
-  0%, 100% { 
-    box-shadow: 0 0 20px rgba(147, 51, 234, 0.3);
-    transform: scale(1);
-  }
-  50% { 
-    box-shadow: 0 0 30px rgba(147, 51, 234, 0.5);
-    transform: scale(1.05);
-  }
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.2); transform: scale(1); }
+  50% { box-shadow: 0 0 30px rgba(139, 92, 246, 0.4); transform: scale(1.05); }
 }
 
-@keyframes fade-in {
-  from { 
-    opacity: 0; 
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1; 
-    transform: translateY(0);
-  }
-}
-
-@keyframes gradient-shift {
+@keyframes gradient {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s ease-in-out infinite;
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+  20%, 40%, 60%, 80% { transform: translateX(4px); }
 }
 
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out;
+.animate-blob {
+  animation: blob 10s infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s infinite;
 }
 
 .animate-gradient {
   background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
+  animation: gradient 4s ease infinite;
 }
 
-/* Enhanced focus states */
-input:focus, button:focus {
-  outline: none;
-  transform: translateY(-1px);
+.animate-shake {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-/* Hover effects for cards */
-.hover\:shadow-3xl:hover {
-  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.15), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
+.animation-delay-200 { animation-delay: 0.1s; animation-fill-mode: both; }
+.animation-delay-2000 { animation-delay: 2s; }
+.animation-delay-4000 { animation-delay: 4s; }
 
-/* Form input enhancements */
-input {
-  font-variant-numeric: tabular-nums;
+::-webkit-scrollbar {
+  width: 6px;
 }
-
-/* Button ripple effect */
-@keyframes ripple {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
+::-webkit-scrollbar-track {
+  background: transparent;
 }
-
-.group:active::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.5);
-  transform: translate(-50%, -50%);
-  animation: ripple 0.6s linear;
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
 }
-
-/* Status indicator animations */
-@keyframes status-pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-.animate-status-pulse {
-  animation: status-pulse 2s ease-in-out infinite;
-}
-
-/* Responsive enhancements */
-@media (max-width: 640px) {
-  .text-5xl {
-    font-size: 2.5rem;
-    line-height: 1.2;
-  }
-  
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  .rounded-3xl {
-    border-radius: 1.5rem;
-  }
-}
-
-/* Glass morphism enhancement */
-.backdrop-blur-xl {
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-/* Custom checkbox styling enhancement */
-input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-}
-
-/* Loading spinner enhancement */
-.animate-spin {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* Form validation states */
-.input-valid {
-  border-color: #10b981;
-  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
-}
-
-.input-invalid {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
-}
-
-/* Button loading state */
-button:disabled {
-  transform: none !important;
-  cursor: not-allowed;
-}
-
-/* Enhanced card hover states */
-.group:hover .group-hover\:scale-110 {
-  transform: scale(1.1);
-}
-
-.group:hover .group-hover\:rotate-3 {
-  transform: rotate(3deg);
-}
-
-/* Micro-interactions */
-.hover\:scale-\[1\.02\]:hover {
-  transform: scale(1.02);
-}
-
-/* Status indicators */
-.status-indicator {
-  position: relative;
-}
-
-.status-indicator::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  width: 8px;
-  height: 8px;
-  background: currentColor;
-  border-radius: 50%;
-  animation: status-pulse 2s ease-in-out infinite;
-}
-
-/* Enhanced shadow layers */
-.shadow-3xl {
-  box-shadow: 
-    0 35px 60px -12px rgba(0, 0, 0, 0.15),
-    0 20px 25px -5px rgba(0, 0, 0, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
-}
-
-/* Gradient border animation */
-@keyframes gradient-border {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-.animate-gradient-border {
-  background: linear-gradient(45deg, #3b82f6, #8b5cf6, #06b6d4, #10b981);
-  background-size: 300% 300%;
-  animation: gradient-border 3s ease infinite;
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
 </style>

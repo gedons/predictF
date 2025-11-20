@@ -1,7 +1,7 @@
 <template>
-  <div class="bg-white rounded-xl p-6 border border-gray-200">
-    <h3 class="text-lg font-semibold text-gray-800 mb-6 flex items-center">
-      <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <div class="bg-white rounded-xl p-6 border border-gray-200 shadow-lg">
+    <h3 class="text-xl font-bold text-gray-800 mb-6 flex items-center border-b pb-4 border-gray-100">
+      <svg class="w-6 h-6 mr-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
       </svg>
       Probability Distribution
@@ -9,30 +9,30 @@
 
     <!-- Chart Type Selector -->
     <div class="flex items-center justify-between mb-6">
-      <div class="flex space-x-2">
+      <div class="flex space-x-2 p-1 bg-gray-100 rounded-lg">
         <button 
           @click="chartType = 'bar'"
-          :class="chartType === 'bar' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-          class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+          :class="chartType === 'bar' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-600 hover:bg-white'"
+          class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-[1.02]"
         >
           Bar Chart
         </button>
         <button 
           @click="chartType = 'doughnut'"
-          :class="chartType === 'doughnut' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
-          class="px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200"
+          :class="chartType === 'doughnut' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-600 hover:bg-white'"
+          class="px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-[1.02]"
         >
-          Pie Chart
+          Doughnut Chart
         </button>
       </div>
       
-      <div class="text-sm text-gray-500">
-        Hover for details
+      <div class="text-sm text-gray-500 hidden sm:block">
+        Hover segments for probability details
       </div>
     </div>
 
     <!-- Chart Container -->
-    <div class="relative">
+    <div class="relative min-h-[250px] flex items-center justify-center">
       <canvas 
         ref="chartCanvas" 
         :width="chartType === 'doughnut' ? 300 : 400" 
@@ -41,55 +41,55 @@
       ></canvas>
       
       <!-- Loading Overlay -->
-      <div v-if="isLoading" class="absolute inset-0 bg-white bg-opacity-75 flex items-center justify-center rounded-lg">
-        <div class="flex items-center space-x-2">
-          <svg class="animate-spin w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24">
+      <div v-if="isLoading" class="absolute inset-0 bg-white bg-opacity-90 flex items-center justify-center rounded-lg transition-opacity duration-300">
+        <div class="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-xl">
+          <svg class="animate-spin w-6 h-6 text-indigo-500" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          <span class="text-sm text-gray-600">Loading chart...</span>
+          <span class="text-base text-gray-700 font-medium">Rendering chart...</span>
         </div>
       </div>
     </div>
 
-    <!-- Chart Legend (for mobile) -->
-    <div class="mt-6 grid grid-cols-3 gap-3 sm:hidden">
-      <div class="text-center p-3 bg-green-50 rounded-lg border border-green-200">
-        <div class="w-3 h-3 bg-green-500 rounded mx-auto mb-1"></div>
-        <div class="text-xs font-medium text-green-700">{{ teams?.home || 'Home' }}</div>
-        <div class="text-sm font-bold text-green-600">{{ formatPercentage(probs.home) }}</div>
+    <!-- Chart Legend (for mobile only, as Chart.js handles it for doughnut on desktop) -->
+    <div v-if="chartType === 'bar'" class="mt-6 grid grid-cols-3 gap-4 border-t pt-4 border-gray-100">
+      <div class="text-center p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+        <div class="w-3 h-3 bg-emerald-500 rounded-full mx-auto mb-1"></div>
+        <div class="text-xs font-medium text-emerald-700 truncate">{{ teams?.home || 'Home' }}</div>
+        <div class="text-sm font-bold text-emerald-600">{{ formatPercentage(probs.home) }}</div>
       </div>
-      <div class="text-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-        <div class="w-3 h-3 bg-yellow-500 rounded mx-auto mb-1"></div>
-        <div class="text-xs font-medium text-yellow-700">Draw</div>
-        <div class="text-sm font-bold text-yellow-600">{{ formatPercentage(probs.draw) }}</div>
+      <div class="text-center p-3 bg-amber-50 rounded-lg border border-amber-200">
+        <div class="w-3 h-3 bg-amber-500 rounded-full mx-auto mb-1"></div>
+        <div class="text-xs font-medium text-amber-700">Draw</div>
+        <div class="text-sm font-bold text-amber-600">{{ formatPercentage(probs.draw) }}</div>
       </div>
-      <div class="text-center p-3 bg-red-50 rounded-lg border border-red-200">
-        <div class="w-3 h-3 bg-red-500 rounded mx-auto mb-1"></div>
-        <div class="text-xs font-medium text-red-700">{{ teams?.away || 'Away' }}</div>
-        <div class="text-sm font-bold text-red-600">{{ formatPercentage(probs.away) }}</div>
+      <div class="text-center p-3 bg-rose-50 rounded-lg border border-rose-200">
+        <div class="w-3 h-3 bg-rose-500 rounded-full mx-auto mb-1"></div>
+        <div class="text-xs font-medium text-rose-700 truncate">{{ teams?.away || 'Away' }}</div>
+        <div class="text-sm font-bold text-rose-600">{{ formatPercentage(probs.away) }}</div>
       </div>
     </div>
 
     <!-- Stats Summary -->
-    <div class="mt-6 p-4 bg-gray-50 rounded-lg">
-      <div class="flex items-center justify-between text-sm">
-        <span class="text-gray-600">Most Likely Outcome:</span>
-        <span class="font-semibold" :class="getMostLikelyClass()">
+    <div class="mt-8 p-5 bg-indigo-50 rounded-xl border border-indigo-200">
+      <div class="flex items-center justify-between text-base">
+        <span class="text-indigo-800 font-semibold">Most Likely Outcome:</span>
+        <span class="font-extrabold" :class="getMostLikelyClass()">
           {{ getMostLikelyOutcome() }} ({{ formatPercentage(getMostLikelyProbability()) }})
         </span>
       </div>
-      <div class="flex items-center justify-between text-sm mt-2">
-        <span class="text-gray-600">Confidence Level:</span>
+      <div class="flex items-center justify-between text-sm mt-3 pt-3 border-t border-indigo-200">
+        <span class="text-indigo-700">Confidence Level:</span>
         <div class="flex items-center space-x-2">
-          <div class="w-20 bg-gray-200 rounded-full h-2">
+          <div class="w-24 bg-indigo-200 rounded-full h-2">
             <div 
-              class="h-2 rounded-full transition-all duration-1000 ease-out"
+              class="h-2 rounded-full transition-all duration-1000 ease-out shadow-md"
               :class="getConfidenceBarClass()"
               :style="`width: ${getConfidenceLevel()}%`"
             ></div>
           </div>
-          <span class="font-semibold text-xs" :class="getConfidenceTextClass()">
+          <span class="font-bold text-sm w-12 text-right" :class="getConfidenceTextClass()">
             {{ getConfidenceLabel() }}
           </span>
         </div>
@@ -121,21 +121,22 @@ const isLoading = ref(true)
 // Chart.js will be loaded from CDN
 let Chart = null
 
+// Use richer, solid colors
 const colors = {
   home: {
-    background: 'rgba(34, 197, 94, 0.8)',
-    border: 'rgba(34, 197, 94, 1)',
-    hover: 'rgba(34, 197, 94, 0.9)'
+    background: 'rgba(16, 185, 129, 1)', // Emerald 500
+    border: 'rgba(5, 150, 105, 1)',   // Emerald 600
+    hover: 'rgba(5, 150, 105, 0.9)'
   },
   draw: {
-    background: 'rgba(245, 158, 11, 0.8)',
-    border: 'rgba(245, 158, 11, 1)',
-    hover: 'rgba(245, 158, 11, 0.9)'
+    background: 'rgba(245, 158, 11, 1)', // Amber 500
+    border: 'rgba(217, 119, 6, 1)',    // Amber 600
+    hover: 'rgba(217, 119, 6, 0.9)'
   },
   away: {
-    background: 'rgba(239, 68, 68, 0.8)',
-    border: 'rgba(239, 68, 68, 1)',
-    hover: 'rgba(239, 68, 68, 0.9)'
+    background: 'rgba(244, 63, 94, 1)',  // Rose 500
+    border: 'rgba(225, 29, 72, 1)',    // Rose 600
+    hover: 'rgba(225, 29, 72, 0.9)'
   }
 }
 
@@ -144,6 +145,7 @@ const formatPercentage = (val) => {
   return (val * 100).toFixed(1) + '%'
 }
 
+// --- Utility functions for summary stats (left unchanged) ---
 const getMostLikelyOutcome = () => {
   const { home, draw, away } = props.probs
   const max = Math.max(home || 0, draw || 0, away || 0)
@@ -162,9 +164,9 @@ const getMostLikelyClass = () => {
   const { home, draw, away } = props.probs
   const max = Math.max(home || 0, draw || 0, away || 0)
   
-  if (max === home) return 'text-green-600'
-  if (max === away) return 'text-red-600'
-  return 'text-yellow-600'
+  if (max === home) return 'text-emerald-600'
+  if (max === away) return 'text-rose-600'
+  return 'text-amber-600'
 }
 
 const getConfidenceLevel = () => {
@@ -181,17 +183,19 @@ const getConfidenceLabel = () => {
 
 const getConfidenceBarClass = () => {
   const max = getMostLikelyProbability()
-  if (max >= 0.6) return 'bg-green-500'
-  if (max >= 0.4) return 'bg-yellow-500'
-  return 'bg-red-500'
+  if (max >= 0.6) return 'bg-emerald-500'
+  if (max >= 0.4) return 'bg-amber-500'
+  return 'bg-rose-500'
 }
 
 const getConfidenceTextClass = () => {
   const max = getMostLikelyProbability()
-  if (max >= 0.6) return 'text-green-600'
-  if (max >= 0.4) return 'text-yellow-600'
-  return 'text-red-600'
+  if (max >= 0.6) return 'text-emerald-600'
+  if (max >= 0.4) return 'text-amber-600'
+  return 'text-rose-600'
 }
+// -----------------------------------------------------------
+
 
 const loadChartJS = async () => {
   if (window.Chart) {
@@ -236,7 +240,9 @@ const createChart = async () => {
         colors.draw.border,
         colors.away.border
       ],
-      borderWidth: 2,
+      borderWidth: 1.5, // Slightly thinner border for cleanliness
+      // Apply rounded corners specifically for the bar chart type
+      ...(chartType.value === 'bar' ? { borderRadius: 6 } : {}),
       hoverBackgroundColor: [
         colors.home.hover,
         colors.draw.hover,
@@ -248,6 +254,12 @@ const createChart = async () => {
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
+    // Global font styling
+    font: {
+      family: 'Inter, sans-serif',
+      weight: '500',
+      color: '#4b5563' // gray-600 for general text
+    },
     plugins: {
       legend: {
         display: chartType.value === 'doughnut',
@@ -255,9 +267,10 @@ const createChart = async () => {
         labels: {
           padding: 20,
           usePointStyle: true,
+          color: '#4b5563', // gray-600
           font: {
-            size: 12,
-            weight: 'bold'
+            size: 13,
+            weight: '600' // slightly bolder legend text
           }
         }
       },
@@ -268,16 +281,20 @@ const createChart = async () => {
             return `${context.label}: ${percentage}`
           }
         },
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
-        titleColor: 'white',
-        bodyColor: 'white',
-        borderColor: 'rgba(255, 255, 255, 0.2)',
+        // Enhanced tooltip styling
+        backgroundColor: '#1f2937', // dark gray for contrast
+        titleColor: '#f9fafb',
+        bodyColor: '#f9fafb',
+        padding: 12,
+        cornerRadius: 6,
+        displayColors: true,
+        borderColor: '#374151',
         borderWidth: 1
       }
     },
     animation: {
       duration: 1000,
-      easing: 'easeOutCubic'
+      easing: 'easeOutQuart' // Smoother transition
     }
   }
   
@@ -292,35 +309,41 @@ const createChart = async () => {
       y: {
         beginAtZero: true,
         max: 1,
+        // Cleaner Y-axis grid
+        grid: {
+          color: 'rgba(0, 0, 0, 0.08)',
+          borderDash: [5, 5], // Dashed lines
+          drawBorder: false, // Hide the main axis line
+        },
         ticks: {
           callback: function(value) {
             return (value * 100).toFixed(0) + '%'
           },
+          color: '#6b7280', // gray-500 for ticks
           font: {
             size: 11
           }
         },
-        grid: {
-          color: 'rgba(0, 0, 0, 0.05)'
-        }
       },
       x: {
+        grid: {
+          display: false,
+          drawBorder: false, // Hide the main axis line
+        },
         ticks: {
+          color: '#4b5563', // gray-600 for category labels
           font: {
-            size: 11,
-            weight: 'bold'
+            size: 12,
+            weight: '600' // bolder category labels
           }
         },
-        grid: {
-          display: false
-        }
       }
     }
     chartConfig.options.plugins.legend.display = false
   }
   
   if (chartType.value === 'doughnut') {
-    chartConfig.options.cutout = '60%'
+    chartConfig.options.cutout = '65%' // Slightly larger cutout
     chartConfig.options.plugins.legend.display = true
   }
   
@@ -332,7 +355,10 @@ onMounted(async () => {
   try {
     await loadChartJS()
     await nextTick()
-    await createChart()
+    // Simulate a brief loading state for the animation to look nice
+    setTimeout(async () => {
+      await createChart()
+    }, 200) 
   } catch (error) {
     console.error('Failed to load Chart.js:', error)
     isLoading.value = false
@@ -342,12 +368,19 @@ onMounted(async () => {
 watch(chartType, async () => {
   isLoading.value = true
   await nextTick()
-  await createChart()
+  // Simulate a brief loading state for the animation to look nice
+  setTimeout(async () => {
+      await createChart()
+  }, 100)
 })
 
 watch(() => props.probs, async () => {
+  isLoading.value = true
   await nextTick()
-  await createChart()
+  // Simulate a brief loading state for the animation to look nice
+  setTimeout(async () => {
+      await createChart()
+  }, 100)
 }, { deep: true })
 
 </script>

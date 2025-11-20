@@ -6,7 +6,6 @@ import PredictView from '../views/PredictView.vue'
 import EnrichedView from '../views/EnrichedView.vue'
 import Onboarding from '../views/Onboarding.vue'
 import MeQuotasView from '../views/MeQuotasView.vue'
-// import CacheStats from '../views/CacheStats.vue'
 import AdminModels from '../views/Admin/AdminModels.vue'
 import AdminQuotas from '../views/Admin/AdminQuotas.vue'
 import AdminUsers from '../views/Admin/AdminUsers.vue'
@@ -21,13 +20,22 @@ const routes = [
   { path: '/user/predict/enriched', component: EnrichedView, meta: { requiresAuth: true } },
   { path: '/user/onboarding', component: Onboarding, meta: { requiresAuth: true } },
   { path: '/user/quotas', component: MeQuotasView, meta: { requiresAuth: true } },
-  // { path: '/user/history', component: CacheStats, meta: { requiresAuth: true }},
   { path: '/admin/models', component: AdminModels, meta: { requiresAuth: true, adminOnly: true } },
   { path: '/admin/quotas', component: AdminQuotas, meta: { requiresAuth: true, adminOnly: true } },
-  { path: '/admin/users',name: 'AdminUsers',component: AdminUsers, meta: { requiresAuth: true, adminOnly: true }},
-  { path: '/admin/dashboard', name: 'AdminDashboard',component: Admin, meta: { requiresAuth: true, adminOnly: true }}
-
-
+  { path: '/admin/users', name: 'AdminUsers', component: AdminUsers, meta: { requiresAuth: true, adminOnly: true } },
+  { path: '/admin/dashboard', name: 'AdminDashboard', component: Admin, meta: { requiresAuth: true, adminOnly: true } },
+  {
+    path: '/admin/pipeline',
+    name: 'DataPipeline',
+    component: () => import('../views/Admin/DataPipelineView.vue'),
+    meta: { requiresAuth: true, adminOnly: true }
+  },
+  {
+    path: '/admin/analytics',
+    name: 'Analytics',
+    component: () => import('../views/Admin/AnalyticsView.vue'),
+    meta: { requiresAuth: true, adminOnly: true }
+  }
 ]
 
 const router = createRouter({ history: createWebHistory(), routes })
@@ -35,7 +43,6 @@ const router = createRouter({ history: createWebHistory(), routes })
 router.beforeEach(async (to, from, next) => {
   const auth = useAuthStore()
 
-  
   if (!to.meta?.requiresAuth) {
     return next()
   }
@@ -48,11 +55,9 @@ router.beforeEach(async (to, from, next) => {
     try {
       await auth.fetchMe()
     } catch (err) {
-
       return next({ name: 'login' })
     }
   } else if (auth.loadingMe) {
-
     try {
       await auth.fetchMe()
     } catch (err) {
@@ -60,11 +65,9 @@ router.beforeEach(async (to, from, next) => {
     }
   }
 
-
   if (to.meta?.adminOnly) {
     const isAdmin = !!(auth.user && (auth.user.is_admin === true || auth.user.isAdmin === true))
     if (!isAdmin) {
-
       return next({ name: 'home' })
     }
   }

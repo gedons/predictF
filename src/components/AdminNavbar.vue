@@ -279,8 +279,8 @@ const navigation = [
     ])
   },
   {
-    name: 'Settings',
-    href: '/admin/settings',
+    name: 'Pipeline',
+    href: '/admin/pipeline',
     icon: h('svg', {
       class: 'w-4 h-4',
       fill: 'none',
