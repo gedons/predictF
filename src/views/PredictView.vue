@@ -194,15 +194,15 @@ function onMatchesError(error) {
           <!-- Match Form Card -->
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-soft-xl border border-gray-200/50 dark:border-gray-700 p-6 sm:p-8 animate-rise-up animation-delay-200">
             <div class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
-              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-2 tracking-tight">Match Parameters</h2>
-              <p class="text-gray-600 dark:text-gray-400 text-sm font-medium tracking-wide">Configure the neural network analysis parameters</p>
+              <h2 class="font-semibold text-2xl font-black text-gray-900 dark:text-white mb-2 tracking-tight">Match Parameters</h2>
+              <p class="font-semibold text-gray-600 dark:text-gray-400 text-sm font-medium tracking-wide">Configure the neural network analysis parameters</p>
             </div>
 
             <form @submit.prevent="submit" class="space-y-6">
               <!-- Team Selection -->
               <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
                     Home Team
                   </label>
@@ -222,7 +222,7 @@ function onMatchesError(error) {
                 </div>
 
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-amber-500 rounded-full mr-2"></span>
                     Away Team
                   </label>
@@ -245,7 +245,7 @@ function onMatchesError(error) {
               <!-- Match Details -->
               <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
                     Match Date
                   </label>
@@ -259,14 +259,14 @@ function onMatchesError(error) {
                       v-model="match_date"
                       type="date"
                       :min="new Date().toISOString().split('T')[0]"
-                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none font-bold tracking-wide shadow-sm group-hover:shadow-md"
+                      class="font-semibold w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none font-bold tracking-wide shadow-sm group-hover:shadow-md"
                       required
                     />
                   </div>
                 </div>
 
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="flex items-center text-sm font-semibold text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
                     League
                   </label>
@@ -278,7 +278,7 @@ function onMatchesError(error) {
                     </div>
                     <select
                       v-model="league"
-                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none cursor-pointer font-bold tracking-wide shadow-sm group-hover:shadow-md"
+                      class="font-semibold w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none cursor-pointer font-bold tracking-wide shadow-sm group-hover:shadow-md"
                     >
                       <option value="premier_league">Premier League</option>
                       <option value="championship">Championship</option>
