@@ -214,7 +214,7 @@ function onMatchesError(error) {
           <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-soft-xl border border-gray-200/50 dark:border-gray-700 p-6 sm:p-8 animate-rise-up animation-delay-200">
             <div class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6 flex items-center justify-between">
               <div>
-                <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-1 tracking-tight">Analysis Parameters</h2>
+                <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-1 tracking-tight font-semibold">Analysis Parameters</h2>
                 <p class="text-gray-600 dark:text-gray-400 text-sm font-medium tracking-wide">Configure teams and neural network settings</p>
               </div>
               <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-green-50 dark:bg-green-900/20 rounded-full border border-green-100 dark:border-green-800/50">
@@ -227,7 +227,7 @@ function onMatchesError(error) {
               <!-- Team Inputs -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="group space-y-2">
-                  <label class="flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="font-semibold flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-red-500 rounded-full"></span>
                     Home Team
                   </label>
@@ -235,13 +235,13 @@ function onMatchesError(error) {
                     <input 
                       v-model="home_team" 
                       placeholder="Home Team" 
-                      class="w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white font-bold shadow-sm group-hover:shadow-md outline-none tracking-wide"
+                      class="font-semibold w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white font-bold shadow-sm group-hover:shadow-md outline-none tracking-wide"
                       required
                     />
                   </div>
                 </div>
                 <div class="group space-y-2">
-                  <label class="flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="font-semibold flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
                     <span class="w-2 h-2 bg-amber-500 rounded-full"></span>
                     Away Team
                   </label>
@@ -249,7 +249,7 @@ function onMatchesError(error) {
                     <input 
                       v-model="away_team" 
                       placeholder="Away Team" 
-                      class="w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white font-bold shadow-sm group-hover:shadow-md outline-none tracking-wide"
+                      class="font-semibold w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300 placeholder-gray-400 dark:placeholder-gray-500 text-gray-900 dark:text-white font-bold shadow-sm group-hover:shadow-md outline-none tracking-wide"
                       required
                     />
                   </div>
@@ -259,24 +259,24 @@ function onMatchesError(error) {
               <!-- Date and League -->
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div class="group space-y-2">
-                  <label class="flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="font-semibold flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
                     Match Date
                   </label>
                   <input 
                     v-model="date" 
                     type="date" 
-                    class="w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 text-gray-900 dark:text-white font-bold shadow-sm outline-none tracking-wide"
+                    class="font-semibold w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 text-gray-900 dark:text-white font-bold shadow-sm outline-none tracking-wide"
                     required
                   />
                 </div>
                 <div class="group space-y-2">
-                  <label class="flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                  <label class="font-semibold flex items-center gap-2 text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
                     League
                   </label>
                   <div class="relative">
                       <select
                         v-model="league"
-                        class="w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 text-gray-900 dark:text-white font-bold shadow-sm outline-none appearance-none cursor-pointer tracking-wide"
+                        class="font-semibold w-full px-5 py-4 bg-white/50 dark:bg-gray-900/50 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 text-gray-900 dark:text-white font-bold shadow-sm outline-none appearance-none cursor-pointer tracking-wide"
                       >
                         <option value="premier_league">Premier League</option>
                         <option value="championship">Championship</option>
@@ -304,7 +304,7 @@ function onMatchesError(error) {
                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                       </div>
                       <div>
-                         <span class="block text-sm font-black tracking-wide" :class="use_cache ? 'text-red-900 dark:text-red-100' : 'text-gray-600 dark:text-gray-400'">Smart Cache</span>
+                         <span class="block text-sm font-black tracking-wide font-semibold " :class="use_cache ? 'text-red-900 dark:text-red-100' : 'text-gray-600 dark:text-gray-400'">Smart Cache</span>
                          <span class="block text-xs text-gray-500 dark:text-gray-400">Faster neural processing</span>
                       </div>
                       <div class="absolute top-4 right-4 w-3 h-3 rounded-full border-2 border-white dark:border-gray-800"
@@ -312,7 +312,7 @@ function onMatchesError(error) {
                    </label>
 
                    <!-- Toggle 2 -->
-                   <label class="relative flex-1 flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 group"
+                   <label class="relative flex-1 flex items-center p-4 rounded-xl border-2 cursor-pointer transition-all duration-300 group font-semibold"
                           :class="force_refresh ? 'bg-white dark:bg-gray-800 border-amber-500 shadow-md' : 'bg-white/50 dark:bg-gray-900/50 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'">
                       <input type="checkbox" v-model="force_refresh" class="sr-only" />
                       <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3 transition-all duration-300 group-hover:scale-110"
@@ -320,7 +320,7 @@ function onMatchesError(error) {
                          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
                       </div>
                       <div>
-                         <span class="block text-sm font-black tracking-wide" :class="force_refresh ? 'text-amber-900 dark:text-amber-100' : 'text-gray-600 dark:text-gray-400'">Deep Refresh</span>
+                         <span class="block text-sm font-black tracking-wide font-semibold" :class="force_refresh ? 'text-amber-900 dark:text-amber-100' : 'text-gray-600 dark:text-gray-400'">Deep Refresh</span>
                          <span class="block text-xs text-gray-500 dark:text-gray-400">Fresh neural computation</span>
                       </div>
                       <div class="absolute top-4 right-4 w-3 h-3 rounded-full border-2 border-white dark:border-gray-800"
@@ -335,7 +335,7 @@ function onMatchesError(error) {
                       @click="clearForm"
                       class="px-6 py-4 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-600 text-gray-600 dark:text-gray-400 font-black rounded-2xl hover:border-gray-400 dark:hover:border-gray-500 hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300 flex items-center justify-center gap-2 tracking-wide group"
                     >
-                      <svg class="w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                      <svg class="font-semibold w-5 h-5 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
                       Clear Parameters
                     </button>
                     
@@ -347,7 +347,7 @@ function onMatchesError(error) {
                       <div class="font-semibold absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
                       <span class="relative flex items-center justify-center gap-3 text-lg">
                         <div v-if="loading" class="w-6 h-6 border-3 border-white/30 rounded-full animate-spin border-t-white"></div>
-                        <svg v-else class="w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        <svg v-else class="font-semibold w-6 h-6 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
                         {{ loading ? 'Running Analysis...' : 'Execute Analysis' }}
                       </span>
                     </button>
