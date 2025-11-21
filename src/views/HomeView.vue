@@ -99,7 +99,7 @@
             </span>
           </h1>
           <p class="text-2xl md:text-3xl text-gray-700 dark:text-gray-300 mb-12 max-w-4xl mx-auto font-medium leading-relaxed tracking-wide">
-            Where machine learning meets athletic intuition. Our neural networks process 2.1 million data points per match to reveal patterns invisible to the human eye.
+           Leverage advanced machine learning algorithms to analyze team performance, player statistics, and historical data for 85% more accurate predictions.
           </p>
           <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <router-link to="/register" class="w-full sm:w-auto group bg-gradient-to-br from-red-600 to-amber-600 text-white px-10 py-5 rounded-2xl text-xl font-black tracking-wide hover:shadow-xl hover:shadow-red-500/40 transition-all duration-500 transform hover:-translate-y-2 flex items-center justify-center border-2 border-transparent hover:border-amber-400">
@@ -122,15 +122,15 @@
               <div class="text-center px-6 pt-6 md:pt-0 group">
                 <div class="text-5xl font-black bg-gradient-to-br from-red-600 to-amber-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">87.3%</div>
                 <h3 class="font-black text-gray-900 dark:text-white text-xl tracking-tight mb-2">Prediction Accuracy</h3>
-                <p class="text-gray-600 dark:text-gray-400 text-base tracking-wide">Verified across 12,000+ matches</p>
+                <p class="text-gray-600 dark:text-gray-400 text-base tracking-wide">Verified across 55,000+ matches</p>
               </div>
               <div class="text-center px-6 pt-10 md:pt-0 group">
-                <div class="text-5xl font-black bg-gradient-to-br from-amber-600 to-emerald-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">2.1M</div>
+                <div class="text-5xl font-black bg-gradient-to-br from-amber-600 to-emerald-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">100k</div>
                 <h3 class="font-black text-gray-900 dark:text-white text-xl tracking-tight mb-2">Data Points/Match</h3>
                 <p class="text-gray-600 dark:text-gray-400 text-base tracking-wide">Real-time neural processing</p>
               </div>
               <div class="text-center px-6 pt-10 md:pt-0 group">
-                <div class="text-5xl font-black bg-gradient-to-br from-emerald-600 to-red-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">18</div>
+                <div class="text-5xl font-black bg-gradient-to-br from-emerald-600 to-red-600 bg-clip-text text-transparent mb-3 group-hover:scale-110 transition-transform duration-500">5+</div>
                 <h3 class="font-black text-gray-900 dark:text-white text-xl tracking-tight mb-2">Global Leagues</h3>
                 <p class="text-gray-600 dark:text-gray-400 text-base tracking-wide">Premier League to J-League</p>
               </div>
