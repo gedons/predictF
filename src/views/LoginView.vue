@@ -26,7 +26,7 @@ async function submit() {
     if (isAdmin) {
       router.push({ path: '/admin/dashboard' })
     } else {
-      router.push({ path: '/user/predict' })
+      router.push({ path: '/user/predict/enriched' })
     }
   } catch (err) {
     error.value = err.response?.data?.detail || err.message || 'Invalid credentials'
