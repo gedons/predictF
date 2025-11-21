@@ -158,31 +158,33 @@ function onMatchesError(error) {
 </script>
 
 <template>
-  <!-- Force light mode background -->
-  <div class="min-h-screen bg-slate-50 relative overflow-hidden font-sans">
+  <div class="min-h-screen bg-gradient-to-br from-amber-50 via-red-50 to-emerald-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden font-sans transition-colors duration-700">
     
-    <!-- Refined Light Background Blobs -->
+    <!-- Red-Amber-Emerald Background Blobs -->
     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-      <div class="absolute -top-[10%] -right-[10%] w-[70%] h-[70%] bg-indigo-100/40 rounded-full blur-3xl animate-blob"></div>
-      <div class="absolute top-[20%] -left-[10%] w-[60%] h-[60%] bg-purple-100/40 rounded-full blur-3xl animate-blob animation-delay-2000"></div>
-      <div class="absolute -bottom-[10%] left-[20%] w-[60%] h-[60%] bg-blue-100/40 rounded-full blur-3xl animate-blob animation-delay-4000"></div>
+      <div class="absolute -top-[10%] -right-[10%] w-[70%] h-[70%] bg-red-100/40 dark:bg-red-900/20 rounded-full blur-3xl animate-float-slow"></div>
+      <div class="absolute top-[20%] -left-[10%] w-[60%] h-[60%] bg-amber-100/40 dark:bg-amber-900/20 rounded-full blur-3xl animate-float-medium"></div>
+      <div class="absolute -bottom-[10%] left-[20%] w-[60%] h-[60%] bg-emerald-100/40 dark:bg-emerald-900/20 rounded-full blur-3xl animate-float-fast"></div>
+      
+      <!-- Grid Pattern -->
+      <div class="absolute inset-0 bg-grid-pattern opacity-10 dark:opacity-15"></div>
     </div>
 
     <UserNavbar />
 
     <div class="relative z-10 container mx-auto px-4 sm:px-6 py-8 lg:py-12">
       <!-- Header Section -->
-      <div class="text-center mb-12 animate-fade-in-up">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-violet-600 to-indigo-600 rounded-2xl shadow-lg shadow-indigo-200 mb-6 transform hover:scale-110 transition-transform duration-300">
+      <div class="text-center mb-12 animate-rise-up">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-red-600 to-amber-600 rounded-2xl shadow-glow mb-6 transform hover:scale-110 hover:rotate-12 transition-all duration-500">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
           </svg>
         </div>
-        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4 tracking-tight">
-          Match Prediction
+        <h1 class="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 tracking-tighter">
+          Match <span class="bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-amber-600 animate-glow">Prediction</span>
         </h1>
-        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Get AI-powered predictions for upcoming matches. Select from live fixtures or enter match details manually.
+        <p class="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed font-medium tracking-wide">
+          AI-powered match analysis with neural network processing. Select fixtures or input custom parameters.
         </p>
       </div>
 
@@ -190,48 +192,50 @@ function onMatchesError(error) {
         <!-- Left: Form Section -->
         <div class="xl:col-span-2 space-y-8">
           <!-- Match Form Card -->
-          <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 p-6 sm:p-8 animate-fade-in-up animation-delay-200">
-            <div class="mb-8 border-b border-slate-100 pb-6">
-              <h2 class="text-2xl font-bold text-slate-900 mb-2">Match Details</h2>
-              <p class="text-slate-500 text-sm">Configure the parameters for the AI model.</p>
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-soft-xl border border-gray-200/50 dark:border-gray-700 p-6 sm:p-8 animate-rise-up animation-delay-200">
+            <div class="mb-8 border-b border-gray-200 dark:border-gray-700 pb-6">
+              <h2 class="text-2xl font-black text-gray-900 dark:text-white mb-2 tracking-tight">Match Parameters</h2>
+              <p class="text-gray-600 dark:text-gray-400 text-sm font-medium tracking-wide">Configure the neural network analysis parameters</p>
             </div>
 
             <form @submit.prevent="submit" class="space-y-6">
               <!-- Team Selection -->
               <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-bold text-slate-700">
+                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
                     Home Team
                   </label>
-                  <div class="relative">
+                  <div class="relative transition-all duration-300 transform group-hover:-translate-y-1">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                       <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <svg class="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15l4-4l4 4"/>
                        </svg>
                     </div>
                     <input
                       v-model="home_team"
                       placeholder="e.g., Manchester United"
-                      class="w-full pl-11 pr-4 py-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-200 bg-slate-50 hover:bg-white focus:bg-white text-slate-900 placeholder-slate-400 outline-none font-medium"
+                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none font-bold tracking-wide shadow-sm group-hover:shadow-md"
                       required
                     />
                   </div>
                 </div>
 
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-bold text-slate-700">
+                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                    <span class="w-2 h-2 bg-amber-500 rounded-full mr-2"></span>
                     Away Team
                   </label>
-                  <div class="relative">
+                  <div class="relative transition-all duration-300 transform group-hover:-translate-y-1">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                       <svg class="w-5 h-5 text-violet-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <svg class="w-5 h-5 text-amber-500 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2H5a2 2 0 00-2-2z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m16 9l-4 4l-4-4"/>
                        </svg>
                     </div>
                     <input
                       v-model="away_team"
                       placeholder="e.g., Liverpool"
-                      class="w-full pl-11 pr-4 py-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-violet-500 focus:border-violet-500 transition-all duration-200 bg-slate-50 hover:bg-white focus:bg-white text-slate-900 placeholder-slate-400 outline-none font-medium"
+                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-amber-500/20 focus:border-amber-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none font-bold tracking-wide shadow-sm group-hover:shadow-md"
                       required
                     />
                   </div>
@@ -241,12 +245,13 @@ function onMatchesError(error) {
               <!-- Match Details -->
               <div class="grid md:grid-cols-2 gap-6">
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-bold text-slate-700">
+                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                    <span class="w-2 h-2 bg-emerald-500 rounded-full mr-2"></span>
                     Match Date
                   </label>
-                  <div class="relative">
+                  <div class="relative transition-all duration-300 transform group-hover:-translate-y-1">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                       <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <svg class="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
                        </svg>
                     </div>
@@ -254,25 +259,26 @@ function onMatchesError(error) {
                       v-model="match_date"
                       type="date"
                       :min="new Date().toISOString().split('T')[0]"
-                      class="w-full pl-11 pr-4 py-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200 bg-slate-50 hover:bg-white focus:bg-white text-slate-900 placeholder-slate-400 outline-none font-medium"
+                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 outline-none font-bold tracking-wide shadow-sm group-hover:shadow-md"
                       required
                     />
                   </div>
                 </div>
 
                 <div class="space-y-2 group">
-                  <label class="flex items-center text-sm font-bold text-slate-700">
+                  <label class="flex items-center text-sm font-black text-gray-700 dark:text-gray-300 tracking-wide">
+                    <span class="w-2 h-2 bg-red-500 rounded-full mr-2"></span>
                     League
                   </label>
-                  <div class="relative">
+                  <div class="relative transition-all duration-300 transform group-hover:-translate-y-1">
                     <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                       <svg class="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <svg class="w-5 h-5 text-red-500 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                        </svg>
                     </div>
                     <select
                       v-model="league"
-                      class="w-full pl-11 pr-4 py-4 border border-slate-200 rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-all duration-200 bg-slate-50 hover:bg-white focus:bg-white text-slate-900 outline-none appearance-none cursor-pointer font-medium"
+                      class="w-full pl-11 pr-4 py-4 border-2 border-gray-300 dark:border-gray-600 rounded-2xl focus:ring-4 focus:ring-red-500/20 focus:border-red-500 transition-all duration-300 bg-white/50 dark:bg-gray-900/50 hover:bg-white dark:hover:bg-gray-800 focus:bg-white dark:focus:bg-gray-800 text-gray-900 dark:text-white outline-none appearance-none cursor-pointer font-bold tracking-wide shadow-sm group-hover:shadow-md"
                     >
                       <option value="premier_league">Premier League</option>
                       <option value="championship">Championship</option>
@@ -281,7 +287,7 @@ function onMatchesError(error) {
                       <option value="bundesliga">Bundesliga</option>
                       <option value="ligue_1">Ligue 1</option>
                     </select>
-                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-slate-500">
+                    <div class="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none text-gray-500">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </div>
                   </div>
@@ -293,51 +299,55 @@ function onMatchesError(error) {
                 <button
                   type="submit"
                   :disabled="loading"
-                  class="flex-1 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 disabled:from-slate-300 disabled:to-slate-400 text-white font-bold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] active:scale-95 shadow-xl shadow-indigo-200 hover:shadow-indigo-300 disabled:shadow-none disabled:cursor-not-allowed flex items-center justify-center"
+                  class="flex-1 group relative bg-gradient-to-br from-red-600 to-amber-600 hover:from-red-700 hover:to-amber-700 disabled:from-gray-300 disabled:to-gray-400 text-white font-black py-4 px-6 rounded-2xl transition-all duration-500 transform hover:scale-[1.02] active:scale-95 shadow-fire disabled:shadow-none disabled:cursor-not-allowed overflow-hidden tracking-wide"
                 >
-                  <span v-if="loading" class="flex items-center">
+                  <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
+                  <span v-if="loading" class=" font-semibold relative flex items-center justify-center">
                     <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                       <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    Running AI Model...
+                    Running Prediction...
                   </span>
-                  <span v-else class="flex items-center text-lg">
-                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span v-else class="font-semibold relative flex items-center justify-center text-lg">
+                    <svg class="w-6 h-6 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
                     </svg>
-                    Generate Prediction
+                    Execute Prediction
                   </span>
                 </button>
 
                 <button 
                   type="button" 
-                  class="sm:w-auto w-full px-8 py-4 border-2 border-slate-200 hover:border-slate-300 text-slate-600 font-bold rounded-xl transition-colors duration-200 hover:bg-slate-50 flex items-center justify-center"
+                  class="sm:w-auto w-full px-8 py-4 border-2 border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500 text-gray-600 dark:text-gray-400 font-black rounded-2xl transition-all duration-300 hover:bg-white dark:hover:bg-gray-800 flex items-center justify-center tracking-wide group"
                   @click="clearForm"
                 >
-                  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg class="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
                   </svg>
-                  Clear
+                  Clear Parameters
                 </button>
               </div>
             </form>
           </div>
 
           <!-- Prediction Results -->
-          <div v-if="prediction" class="transform transition-all duration-500 ease-in-out animate-fade-in-up">
+          <div v-if="prediction" class="transform transition-all duration-500 ease-in-out animate-rise-up">
             <PredictionPreview :prediction="prediction" />
           </div>
         </div>
 
         <!-- Right: Upcoming Matches -->
-        <div class="space-y-6 animate-fade-in-up animation-delay-200">
+        <div class="space-y-6 animate-rise-up animation-delay-200">
           
           <!-- Upcoming Matches Component -->
-          <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-100 overflow-hidden min-h-[300px]">
-             <div class="p-6 border-b border-slate-100 bg-slate-50/50">
-                <h3 class="font-bold text-slate-900 text-lg flex items-center">
-                    <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full mr-3 animate-pulse"></span>
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl shadow-soft-xl border border-red-100 dark:border-red-800/30 overflow-hidden min-h-[300px]">
+             <div class="p-6 border-b border-gray-200 dark:border-gray-700 bg-gradient-to-r from-red-50/50 to-amber-50/50 dark:from-red-900/10 dark:to-amber-900/10">
+                <h3 class="font-black text-gray-900 dark:text-white text-lg flex items-center tracking-tight">
+                    <span class="relative flex h-3 w-3 mr-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
                     Live Fixtures
                 </h3>
              </div>
@@ -355,21 +365,21 @@ function onMatchesError(error) {
           </div>
 
           <!-- Data Source Info -->
-          <div class="bg-white rounded-2xl p-5 border border-indigo-100 shadow-sm">
+          <div class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-5 border border-gray-200 dark:border-gray-700 shadow-sm">
             <div class="flex items-start text-sm">
-              <div class="p-2 bg-indigo-50 rounded-lg mr-4 shrink-0">
-                <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="p-2 bg-red-50 dark:bg-red-900/30 rounded-lg mr-4 shrink-0">
+                <svg class="w-5 h-5 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
               <div>
-                <p class="font-bold text-slate-800 mb-1">Data Source</p>
-                <p class="text-slate-500 leading-relaxed">
+                <p class="font-black text-gray-800 dark:text-white mb-1 tracking-wide">Data Source</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-medium">
                   Match data provided by Football-Data.org API. 
-                  <span v-if="matchStats.upcomingMatches > 0" class="text-indigo-600 font-medium">
+                  <span v-if="matchStats.upcomingMatches > 0" class="text-red-600 dark:text-red-400 font-black">
                     Showing {{ matchStats.upcomingMatches }} fixtures.
                   </span>
-                  <span v-if="matchStats.lastUpdate" class="block mt-1 text-xs text-slate-400">
+                  <span v-if="matchStats.lastUpdate" class="block mt-1 text-xs text-gray-500 dark:text-gray-400 font-medium">
                     Updated: {{ formatLastUpdate(matchStats.lastUpdate) }}
                   </span>
                 </p>
@@ -378,17 +388,17 @@ function onMatchesError(error) {
           </div>
 
           <!-- Rate Limit Info -->
-          <div v-if="footballApiKey" class="bg-white rounded-2xl p-5 border border-emerald-100 shadow-sm">
+          <div v-if="footballApiKey" class="bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-2xl p-5 border border-emerald-100 dark:border-emerald-800/30 shadow-sm">
             <div class="flex items-start text-sm">
-              <div class="p-2 bg-emerald-50 rounded-lg mr-4 shrink-0">
-                <svg class="w-5 h-5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div class="p-2 bg-emerald-50 dark:bg-emerald-900/30 rounded-lg mr-4 shrink-0">
+                <svg class="w-5 h-5 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                 </svg>
               </div>
               <div>
-                <p class="font-bold text-slate-800 mb-1">API Status: Connected</p>
-                <p class="text-slate-500 text-xs leading-relaxed">
-                  Auto-refresh is active (5 min interval) to respect rate limits.
+                <p class="font-black text-gray-800 dark:text-white mb-1 tracking-wide">API Status: Connected</p>
+                <p class="text-gray-500 dark:text-gray-400 text-xs leading-relaxed font-medium">
+                  Auto-refresh active (5 min interval) with smart rate limiting.
                 </p>
               </div>
             </div>
@@ -402,31 +412,88 @@ function onMatchesError(error) {
 </template>
 
 <style scoped>
-/* Animations */
-@keyframes blob {
+@keyframes float-slow {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(30px, -50px) scale(1.1); }
   66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes float-medium {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(20px, -30px) rotate(180deg); }
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
+@keyframes float-fast {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-15px, 15px) rotate(90deg); }
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+@keyframes rise-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1);
+  }
 }
 
-.animation-delay-200 { animation-delay: 0.1s; animation-fill-mode: both; }
-.animation-delay-2000 { animation-delay: 2s; }
-.animation-delay-4000 { animation-delay: 4s; }
+@keyframes glow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-/* Scrollbars */
+/* Background Grid Pattern */
+.bg-grid-pattern {
+  background-image: 
+    linear-gradient(rgba(220, 38, 38, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220, 38, 38, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* Shadow Systems */
+.shadow-soft-xl {
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.15),
+    0 8px 16px -8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.shadow-glow {
+  box-shadow: 
+    0 0 20px rgba(220, 38, 38, 0.3),
+    0 0 40px rgba(217, 119, 6, 0.2);
+}
+
+.shadow-fire {
+  box-shadow: 
+    0 10px 30px rgba(220, 38, 38, 0.3),
+    0 15px 40px rgba(217, 119, 6, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Animation Classes */
+.animate-float-slow { animation: float-slow 8s ease-in-out infinite; }
+.animate-float-medium { animation: float-medium 6s ease-in-out infinite; }
+.animate-float-fast { animation: float-fast 4s ease-in-out infinite; }
+
+.animate-rise-up {
+  animation: rise-up 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-glow {
+  background-size: 200% 200%;
+  animation: glow 4s ease infinite;
+}
+
+.animation-delay-200 { 
+  animation-delay: 0.2s; 
+  animation-fill-mode: both;
+}
+
+/* Enhanced scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -434,10 +501,15 @@ function onMatchesError(error) {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #dc2626;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #b91c1c;
+}
+
+/* Smooth transitions for dark mode */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 </style>
